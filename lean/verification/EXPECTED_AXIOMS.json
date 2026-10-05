@@ -107,5 +107,98 @@
     "propext",
     "Classical.choice",
     "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.domain_empty": [],
+  "CausalFoundations.Semantic.semantic_eq_refl": [],
+  "CausalFoundations.Semantic.semantic_eq_symm": [],
+  "CausalFoundations.Semantic.semantic_eq_trans": [],
+  "CausalFoundations.Semantic.semantic_eq_iff_domains": [],
+  "CausalFoundations.Semantic.semantic_eq_iff_domain_equal": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.domain_classOf": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.classOf_eq_iff": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.class_domain_injective": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.class_le_refl": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.class_le_trans": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.class_le_antisymm": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.class_order_iff": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.class_order_entailment": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.basis_subset_implies_order": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.sufficient_equiv": [],
+  "CausalFoundations.Semantic.class_sufficient_iff": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.sufficient_upper": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.sufficient_le_refl": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.sufficient_le_trans": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.sufficient_le_antisymm": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Semantic.minimal_iff_maximal_domain": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.theorem15": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Tests.alias_bases_syntactically_distinct": [],
+  "CausalFoundations.Tests.alias_classes_equal": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Tests.full_basis_sufficient": [],
+  "CausalFoundations.Tests.empty_basis_not_sufficient": [],
+  "CausalFoundations.Tests.weak_to_strong_direction": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Tests.empty_ambient_classes_equal": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Tests.two_branch_bases_sufficient": [],
+  "CausalFoundations.Tests.disjunction_not_conjunction_generated": [
+    "propext"
   ]
 }

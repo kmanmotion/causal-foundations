@@ -30,7 +30,8 @@
   ],
   "formalization_scope": [
     "Theorem 13, finite horizons in a commutative cancellative resource monoid",
-    "Theorem 14, universal nonanticipating residual policies, maximal residual invariance and viable subfibers in an arbitrary commutative resource monoid"
+    "Theorem 14, universal nonanticipating residual policies, maximal residual invariance and viable subfibers in an arbitrary commutative resource monoid",
+    "Theorem 15, semantic sufficient-basis quotient partial order, upper set and minimal-class/maximal-conjunction-domain equivalence for a fixed finite premise library"
   ],
   "whole_paper_formalized": false
 }
