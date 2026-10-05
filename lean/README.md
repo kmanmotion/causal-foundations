@@ -1,6 +1,6 @@
-# Causal Foundations — Lean 4 formalization v0.2.0
+# Causal Foundations — Lean 4 formalization v0.3.0
 
-This supplement formalizes **Theorems 13 and 14** of Kai Liang's
+This supplement formalizes **Theorems 13, 14 and 15** of Kai Liang's
 *Causal Foundations and Experimental Certification of Contingent Assignment,
 Heredity, and Reflexive Maintenance*, v1.0,
 [DOI 10.5281/zenodo.22902457](https://doi.org/10.5281/zenodo.22902457).
@@ -13,20 +13,28 @@ Heredity, and Reflexive Maintenance*, v1.0,
   maximal residual-invariant set, and nonempty viable residual subfibers are
   equivalent. A memoryless policy is constructed as a consequence; general
   history dependence is allowed in the initial policy condition.
+- `CausalFoundations.theorem15`: semantic sufficient-basis classes form a
+  partial order and an upper set in the weak-to-strong order. Minimal sufficient
+  classes correspond exactly to maximal sufficient conjunction-generated
+  theorem domains, relative to one fixed finite premise library.
 
 See the [Theorem 13 alignment](STATEMENT_ALIGNMENT.md),
-[Theorem 14 alignment](THEOREM14_ALIGNMENT.md), and
-[coverage inventory](THEOREM_COVERAGE.md). The other 14 numbered theorems and
+[Theorem 14 alignment](THEOREM14_ALIGNMENT.md),
+[Theorem 15 alignment](THEOREM15_ALIGNMENT.md), and
+[coverage inventory](THEOREM_COVERAGE.md). The other 13 numbered theorems and
 remaining supplementary obligations are not claimed to be formalized.
 
-There are **44 audited main theorem declarations and 10 boundary-test theorems**.
+There are **67 audited main theorem declarations and 18 boundary-test theorems**.
 These include auxiliary lemmas and are not counts of new research discoveries.
 Theorem 13 depends on the standard `Classical.choice`; Theorem 14 depends on the
-standard `propext`, `Classical.choice` and `Quot.sound`. Every transitive dependency
+standard `propext`, `Classical.choice` and `Quot.sound`; Theorem 15 depends on
+`propext` and `Quot.sound`. Every transitive dependency
 is checked against an explicit list. Omitted proofs and custom dependencies fail
 verification. The Boolean positive example and truncated-addition negative example
 check that Theorem 14 neither silently assumes cancellation nor claims every
 commutative monoid admits a universal winning policy.
+The semantic tests check aliases, ambient restriction, direction of entailment,
+and failure of an enlarged-formula interpretation of domain maximality.
 
 ## Reproduce
 
@@ -38,6 +46,7 @@ lake build CausalFoundations
 lake env lean AxiomAudit.lean
 lake env lean BoundaryTests.lean -o .lake/build/lib/lean/BoundaryTests.olean
 lake env lean ResidualGameTests.lean -o .lake/build/lib/lean/ResidualGameTests.olean
+lake env lean SemanticBasisTests.lean -o .lake/build/lib/lean/SemanticBasisTests.olean
 ```
 
 For the complete checks, obtain the official
@@ -52,10 +61,10 @@ python3 verification/run_checks.py \
 ```
 
 The runner checks the three published PDF hashes, official executable hashes,
-all 54 theorem dependencies, rejection of a false statement, fresh kernel replay
-of all constants imported by `ReplayAll` (both proof modules and both test modules),
+all 85 theorem dependencies, rejection of a false statement, fresh kernel replay
+of all constants imported by `ReplayAll` (three proof modules and three test modules),
 and a clean source rebuild followed by the same complete replay. Main and boundary
-dependency audits must agree between the two builds. There are 16 command checks.
+dependency audits must agree between the two builds. There are 18 command checks.
 `NegativeControl.lean` deliberately contains an invalid proof of `2 = 3` and
 must fail compilation; it is excluded from the library and default build target.
 
@@ -86,5 +95,5 @@ Formal verification does not establish biochemical realization or historical
 origin claims. Publication and review status are described in the
 [repository README](../README.md).
 
-The proposed next target is Theorem 15's semantic sufficient-basis quotient
-poset. It is not yet formalized here.
+The proposed next target is Theorem 16's representation-invariance theorem
+for the semantic sufficient-basis posets. It is not yet formalized here.
