@@ -1,4 +1,4 @@
-# Published-paper formalization inventory — v0.1.0
+# Published-paper formalization inventory — v0.2.0
 
 Baseline: Causal Foundations v1.0, DOI 10.5281/zenodo.22902457.
 This is a source-bound implementation inventory, not a fresh proof audit of all
@@ -24,8 +24,8 @@ corresponding mathlib API has already been found or tested.
 | T10; §8.1 | Positive conditional exit floor forbids permanent named orientation and bounds its mean exit time | Discrete epochs, hazard floor 0<r≤1, tail induction, infinite-event limit, tail-sum expectation | NOT_FORMALIZED |
 | T11; §8.4 | Strict margins persist in a sufficiently small neighborhood of the same structural class | Finite diagnostic family, locally Lipschitz bounds, positive margins/locality radii, zero-Lipschitz convention | NOT_FORMALIZED |
 | T12; §8.5 | Local finite-dimensional nonnegative parasite dynamics: subcritical decay, supercritical first-order direction, critical non-decision | Equivalent norm, spectral radius/Perron–Frobenius facts, little-o remainder, cone invariance; S20 | NOT_FORMALIZED |
-| T13; §10.2, pp.19–20 | Finite sequential resource feasibility iff all aggregate prefixes are decomposable in a commutative cancellative monoid | Explicit monoid laws, finite-prefix recursion, cancellation, existential selection; source alignment in STATEMENT_ALIGNMENT.md | COMPLETE — pilot endpoint |
-| T14; §11.2 | Nonanticipating winning policies iff every root lies in the maximal residual invariant iff viable residual subfibers exist | Arbitrary commutative monoid, residual game, invariant-union closure, reachable histories, set-theoretic successor choice; measurable selection NOT automatic | NOT_FORMALIZED |
+| T13; §10.2, pp.19–20 | Finite sequential resource feasibility iff all aggregate prefixes are decomposable in a commutative cancellative monoid | Explicit monoid laws, finite-prefix recursion, cancellation, existential selection; source alignment in STATEMENT_ALIGNMENT.md | COMPLETE — Theorem 13 |
+| T14; §11.2 | Nonanticipating winning policies iff every root lies in the maximal residual invariant iff viable residual subfibers exist | Arbitrary commutative monoid, general prefix-causal policies on infinite streams, invariant-union closure, zero-padded continuations, memoryless reduction and viable subfibers; alignment in THEOREM14_ALIGNMENT.md | COMPLETE — Theorem 14 |
 | T15; §12.2 | Semantic sufficient-basis quotient poset; minimal classes correspond to maximal conjunction-generated domains | Finite declared premise library, ambient semantic entailment, equivalence quotient, order/upper set, reverse inclusion | NOT_FORMALIZED |
 | T16; §12.5 | Representation-invariant sufficient-basis posets under declared semantic transport | T15 objects; bijections preserving/reflecting ambient membership, target and every premise atom | NOT_FORMALIZED |
 
@@ -34,7 +34,7 @@ corresponding mathlib API has already been found or tested.
 These entries prevent “16/16” from being misreported as full-paper coverage.
 They are grouped work packages, not a claim that all proof obligations in the
 supplement have been enumerated. Every group below remains NOT_FORMALIZED except
-the explicitly isolated boundary test in U21.
+the explicitly isolated boundary tests in U21.
 
 | ID | Location | Result family / further dependency |
 |---|---|---|
@@ -58,7 +58,7 @@ the explicitly isolated boundary test in U21.
 | U18 | §9.7; S13.1–S13.2 | Whole-envelope confidence soundness, acquisition+coverage, and separately assumed quantitative power separation |
 | U19 | §9.7; S13.3–S13.4 | Random cell counts and simultaneous-in-time coverage under valid sampling designs; no arbitrary stopping substitution |
 | U20 | §§10.1,10.3 | No canonical resource scalar and no unconditional positive-dissipation consequence |
-| U21 | §11.3 | Cancellative/idempotent branches, CRS sufficiency, isomorphism and quotient limits; only the truncated target-monoid two-step obstruction is checked in BoundaryTests.lean, NOT the quotient homomorphism or full CRK theory |
+| U21 | §11.3 | Cancellative/idempotent branches, CRS sufficiency, isomorphism and quotient limits; the truncated target-monoid obstruction and absence of winning policies are checked, together with a Boolean noncancellative positive example; the general idempotent/cancellative branches, quotient homomorphism and remaining claims are NOT all formalized |
 | U22 | Proposition 2; §12.1 | Unrestricted weakest antecedent is degenerate; declared noncircular premise language is essential |
 | U23 | §12.3 | Definitional-library expansions versus genuinely weaker sufficient assumptions |
 | U24 | S19 | Measurability of countable diagnostics, signatures, capacity and downstream probability/decision events |
@@ -79,8 +79,8 @@ the explicitly isolated boundary test in U21.
 ## Implementation order and completion gate
 
 1. T13 source-bound pilot (this package).
-2. T14 residual-invariant characterization, with fully specified strategy and
-   history semantics, reusing the monoid interface using only the published definitions.
+2. T14 residual-invariant characterization (complete), including general
+   nonanticipating stream policies and the derived memoryless selector.
 3. Symmetry/quotient and semantic-poset blocks; split T01's deterministic and
    stochastic branches explicitly until both are proved.
 4. Probability kernels, TV contraction, causal certificates and composition.
@@ -90,5 +90,5 @@ the explicitly isolated boundary test in U21.
 This order is a proposal for the separately authorized verification track, not a
 change to the main AURORA research task. Work estimates await API/dependency
 prototypes; no automatic conversion or whole-paper completion date is promised.
-One pilot endpoint out of 16 numbered endpoints is NOT a meaningful percentage
-of total mathematical work. No whole-paper certification is claimed.
+Two completed endpoints out of 16 numbered endpoints are NOT a meaningful
+percentage of total mathematical work. No whole-paper certification is claimed.

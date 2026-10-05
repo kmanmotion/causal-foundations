@@ -1,1 +1,2 @@
 import CausalFoundations.ResourcePrefix
+import CausalFoundations.ResidualGame

@@ -1,13 +1,13 @@
 {
-  "CausalFoundations.theorem13": [
-    "Classical.choice"
-  ],
   "CausalFoundations.prefix_zero": [],
   "CausalFoundations.prefix_succ": [],
   "CausalFoundations.balance_of_adjacent_prefixes": [],
   "CausalFoundations.cumulative_balance": [],
   "CausalFoundations.sequential_implies_prefix": [],
   "CausalFoundations.prefix_implies_sequential": [
+    "Classical.choice"
+  ],
+  "CausalFoundations.theorem13": [
     "Classical.choice"
   ],
   "CausalFoundations.residual_unique": [],
@@ -21,9 +21,91 @@
     "propext",
     "Classical.choice"
   ],
+  "CausalFoundations.CRK.root_omega": [],
+  "CausalFoundations.CRK.next_omega": [],
+  "CausalFoundations.CRK.wmax_invariant": [],
+  "CausalFoundations.CRK.prefix_congr": [],
+  "CausalFoundations.CRK.stateAt_prefix": [],
+  "CausalFoundations.CRK.stateAt_zero": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.stateAt_succ": [],
+  "CausalFoundations.CRK.winning_state_omega": [],
+  "CausalFoundations.CRK.extend_prefix": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.extend_current": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.extend_future": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.prefix_zero_tail": [],
+  "CausalFoundations.CRK.extend_allPrefixes": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.zero_prefix": [],
+  "CausalFoundations.CRK.zero_stream_feasible": [],
+  "CausalFoundations.CRK.reachable_invariant": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.winning_root": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.policies_imply_roots": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.response_spec": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.CRK.play_prefix": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.policyOf_nonanticipating": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.play_totals": [],
+  "CausalFoundations.CRK.play_stateAt": [],
+  "CausalFoundations.CRK.play_admissible": [],
+  "CausalFoundations.CRK.play_stays": [],
+  "CausalFoundations.CRK.memoryless_winning": [
+    "propext"
+  ],
+  "CausalFoundations.CRK.roots_imply_memoryless": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.CRK.roots_imply_policies": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.CRK.roots_imply_subfibers": [],
+  "CausalFoundations.CRK.subfibers_imply_roots": [],
+  "CausalFoundations.theorem14": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
   "CausalFoundations.Tests.zero_horizon": [],
   "CausalFoundations.Tests.not_cancellative": [],
   "CausalFoundations.Tests.aggregate_feasible": [],
   "CausalFoundations.Tests.not_sequential": [],
-  "CausalFoundations.Tests.omission_counterexample": []
+  "CausalFoundations.Tests.omission_counterexample": [],
+  "CausalFoundations.Tests.truncated_root_not_viable": [],
+  "CausalFoundations.Tests.truncated_no_winning_policies": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Tests.boolean_not_cancellative": [],
+  "CausalFoundations.Tests.boolean_viable_subfibers": [],
+  "CausalFoundations.Tests.boolean_winning_policies": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ]
 }

@@ -36,8 +36,9 @@ The PDF SHA-256 is
 4. `residual_unique`, `residual_prefix_locality` and `sequential_stock_unique`
    check that the residual is uniquely fixed by current prefix data. These are
    auxiliary consequences, not separately credited new research results.
-   This is not a formalization of the arbitrary noncancellative online-policy
-   equivalence of Theorem 14, nor of measurable/continuous/computable selection.
+   The arbitrary-monoid online-policy equivalence of Theorem 14 is formalized
+   separately; see THEOREM14_ALIGNMENT.md. No measurable/continuous/computable
+   selector is asserted by either endpoint.
 
 ## Boundary tests
 
@@ -57,6 +58,7 @@ The PDF SHA-256 is
 No finite-sample check is substituted for the universal proof. Cancellation is
 not claimed necessary for every prefix-complete monoid. No result about energy,
 thermodynamic dissipation, infinite-horizon stochastic survival, biochemical
-realization, origin of coding, Theorem 14, or later research is credited.
+realization, origin of coding, or later research is credited by this T13 proof.
+The separate Theorem 14 proof is documented in THEOREM14_ALIGNMENT.md.
 Semantic alignment here is reviewed by the current assistant, not independently
 peer-reviewed or itself automatically established by Lean.
