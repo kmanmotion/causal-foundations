@@ -1,0 +1,29 @@
+{
+  "CausalFoundations.theorem13": [
+    "Classical.choice"
+  ],
+  "CausalFoundations.prefix_zero": [],
+  "CausalFoundations.prefix_succ": [],
+  "CausalFoundations.balance_of_adjacent_prefixes": [],
+  "CausalFoundations.cumulative_balance": [],
+  "CausalFoundations.sequential_implies_prefix": [],
+  "CausalFoundations.prefix_implies_sequential": [
+    "Classical.choice"
+  ],
+  "CausalFoundations.residual_unique": [],
+  "CausalFoundations.residual_prefix_locality": [],
+  "CausalFoundations.sequential_stock_unique": [],
+  "CausalFoundations.natResources_cancellative": [
+    "propext"
+  ],
+  "CausalFoundations.nonvacuity_nonzero": [],
+  "CausalFoundations.nonvacuity_prefix": [
+    "propext",
+    "Classical.choice"
+  ],
+  "CausalFoundations.Tests.zero_horizon": [],
+  "CausalFoundations.Tests.not_cancellative": [],
+  "CausalFoundations.Tests.aggregate_feasible": [],
+  "CausalFoundations.Tests.not_sequential": [],
+  "CausalFoundations.Tests.omission_counterexample": []
+}
