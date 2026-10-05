@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   verify:
-    name: Compile, audit and replay Theorem 13
+    name: Compile, audit and replay Theorems 13 and 14
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
