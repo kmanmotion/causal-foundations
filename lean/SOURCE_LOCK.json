@@ -1,0 +1,35 @@
+{
+  "schema": "causal-foundations-public-source-lock-v1",
+  "baseline": {
+    "title": "Causal Foundations and Experimental Certification of Contingent Assignment, Heredity, and Reflexive Maintenance",
+    "version": "v1.0",
+    "doi": "10.5281/zenodo.22902457",
+    "repository": "https://github.com/kmanmotion/causal-foundations",
+    "commit": "05ef1c834a464ed004a8fcc649f8a10a16857714",
+    "release_url": "https://github.com/kmanmotion/causal-foundations/releases/tag/v1.0"
+  },
+  "volumes": [
+    {
+      "role": "MAIN",
+      "path": "CAUSAL_FOUNDATIONS_AND_EXPERIMENTAL_CERTIFICATION.pdf",
+      "sha256": "880ac4d4d6120b0b803adf0267f0476c505528e6e8c3eb8334c3e3e6327f996b",
+      "bytes": 317969
+    },
+    {
+      "role": "MATHEMATICAL_SUPPLEMENT",
+      "path": "CAUSAL_FOUNDATIONS_MATHEMATICAL_SUPPLEMENT.pdf",
+      "sha256": "5a82b55a70939100510c0a76a47fb437af2647343c1c886e2bc8491cb6f55341",
+      "bytes": 332503
+    },
+    {
+      "role": "EXPERIMENTAL_METHODS",
+      "path": "CAUSAL_FOUNDATIONS_EXPERIMENTAL_METHODS_SUPPLEMENT.pdf",
+      "sha256": "077a0e05f1b56a38308dfc8c0378b7fd27273b46a0b86673eb4d95a384ba49c1",
+      "bytes": 115946
+    }
+  ],
+  "formalization_scope": [
+    "Theorem 13, finite horizons in a commutative cancellative resource monoid"
+  ],
+  "whole_paper_formalized": false
+}

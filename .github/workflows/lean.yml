@@ -1,0 +1,65 @@
+name: Lean verification
+
+on:
+  push:
+    branches: [main, 'lean/**']
+    paths: ['lean/**', '.github/workflows/lean.yml']
+  pull_request:
+    paths: ['lean/**', '.github/workflows/lean.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Compile, audit and replay Theorem 13
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out the exact source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Install the pinned official Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 \
+            https://github.com/leanprover/lean4/releases/download/v4.24.0/lean-4.24.0-linux.tar.zst \
+            --output lean.tar.zst
+          echo 'b14f5e5159219dd1a1956c3b806813319f5e94ccd5bdfd56f54520609a5bb5ec  lean.tar.zst' | sha256sum --check --strict
+          tar --zstd -xf lean.tar.zst
+
+      - name: Obtain the pinned Lean kernel replay checker
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$RUNNER_TEMP/lean4checker"
+          git -C "$RUNNER_TEMP/lean4checker" remote add origin https://github.com/leanprover/lean4checker.git
+          git -C "$RUNNER_TEMP/lean4checker" fetch --depth 1 origin da26eb05e9959402afcb9bd6dfe5dc4f700f70d6
+          git -C "$RUNNER_TEMP/lean4checker" checkout --detach FETCH_HEAD
+
+      - name: Verify on standard Linux without a compatibility layer
+        shell: bash
+        run: |
+          python3 lean/verification/run_checks.py \
+            --toolchain "$RUNNER_TEMP/lean-4.24.0-linux" \
+            --checker "$RUNNER_TEMP/lean4checker" \
+            --require-standard-runtime
+
+      - name: Retain verification results and logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: lean-verification-${{ github.run_id }}-${{ github.run_attempt }}
+          path: lean/verification/run/
+          if-no-files-found: warn
+          retention-days: 14

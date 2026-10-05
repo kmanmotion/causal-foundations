@@ -1,0 +1,15 @@
+import CausalFoundations
+
+#print axioms CausalFoundations.theorem13
+#print axioms CausalFoundations.prefix_zero
+#print axioms CausalFoundations.prefix_succ
+#print axioms CausalFoundations.balance_of_adjacent_prefixes
+#print axioms CausalFoundations.cumulative_balance
+#print axioms CausalFoundations.sequential_implies_prefix
+#print axioms CausalFoundations.prefix_implies_sequential
+#print axioms CausalFoundations.residual_unique
+#print axioms CausalFoundations.residual_prefix_locality
+#print axioms CausalFoundations.sequential_stock_unique
+#print axioms CausalFoundations.natResources_cancellative
+#print axioms CausalFoundations.nonvacuity_nonzero
+#print axioms CausalFoundations.nonvacuity_prefix

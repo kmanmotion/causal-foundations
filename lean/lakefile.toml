@@ -1,0 +1,6 @@
+name = "causal_foundations_lean"
+version = "0.1.0"
+defaultTargets = ["CausalFoundations"]
+
+[[lean_lib]]
+name = "CausalFoundations"
