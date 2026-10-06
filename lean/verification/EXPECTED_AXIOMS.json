@@ -329,5 +329,68 @@
   "CausalFoundations.FixedSetTests.channel_action_uses_inverse_relabeling": [
     "Quot.sound"
   ],
-  "CausalFoundations.FixedSetTests.trivial_group_boundary": []
+  "CausalFoundations.FixedSetTests.trivial_group_boundary": [],
+  "CausalFoundations.Symmetry.inverse_act_act": [],
+  "CausalFoundations.Symmetry.orbit_symm": [],
+  "CausalFoundations.Symmetry.orbit_trans": [],
+  "CausalFoundations.Symmetry.orbit_class_eq_iff": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.orbit_class_act": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.stable_orbit_membership": [],
+  "CausalFoundations.Symmetry.restrict_equivariance": [],
+  "CausalFoundations.Symmetry.factor_restrict": [],
+  "CausalFoundations.Symmetry.factor_orbit_constant": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.factor_invariant": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.factor_fixed": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.factor_singleton": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.factor_no_contingency": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.nontrivial_prevents_factorization": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.reachable_least": [],
+  "CausalFoundations.Symmetry.reachable_stable": [],
+  "CausalFoundations.Symmetry.allowed_step_equivariant": [],
+  "CausalFoundations.Symmetry.reachable_family_stable": [],
+  "CausalFoundations.Symmetry.reachable_erasure_fixed": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.theorem2": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.OrbitErasureTests.proper_stable_domain_erases_nonfixed_states": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.OrbitErasureTests.local_domain_does_not_assert_outside_fixedness": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.OrbitErasureTests.singleton_conditioning_needs_group_stability": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.OrbitErasureTests.factorization_alone_does_not_fix_channels": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.OrbitErasureTests.equivariance_alone_does_not_erase": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.OrbitErasureTests.quotient_identifies_exactly_state_orbits": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.OrbitErasureTests.transported_interventions_generate_stable_reachability": [],
+  "CausalFoundations.OrbitErasureTests.empty_preparation_has_no_reachable_origin": [],
+  "CausalFoundations.OrbitErasureTests.transition_family_closure_is_essential": []
 }

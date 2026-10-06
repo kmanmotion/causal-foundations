@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compile, audit and replay published Theorems 13–16 and Theorem 1 deterministic branch; fail closed."""
+"""Compile, audit and replay published Theorems 2, 13–16 and Theorem 1 deterministic branch; fail closed."""
 import argparse
 from datetime import datetime, timezone
 import hashlib
@@ -45,10 +45,10 @@ def main():
         env['LD_PRELOAD'] = str(args.compat_library.resolve())
     records = []
     result = {
-        'schema': 'causal-foundations-lean-verification-v6',
+        'schema': 'causal-foundations-lean-verification-v7',
         'status': 'RUNNING',
         'started_utc': datetime.now(timezone.utc).isoformat(),
-        'published_numbered_endpoints_targeted': ['Theorem 13', 'Theorem 14', 'Theorem 15', 'Theorem 16'],
+        'published_numbered_endpoints_targeted': ['Theorem 2', 'Theorem 13', 'Theorem 14', 'Theorem 15', 'Theorem 16'],
         'published_numbered_endpoint_branches_targeted': ['Theorem 1/deterministic'],
         'whole_paper_formalized': False,
         'runtime_compatibility': {'used': bool(args.compat_library)},
@@ -104,8 +104,9 @@ def main():
         pins = json.loads((root / 'verification/TOOLCHAIN_LOCK.json').read_text())
         expected = json.loads((root / 'verification/EXPECTED_AXIOMS.json').read_text())
         main_modules = ['CausalFoundations.ResourcePrefix', 'CausalFoundations.ResidualGame',
-                        'CausalFoundations.SemanticBasis', 'CausalFoundations.Representation', 'CausalFoundations.FixedSet']
-        test_modules = ['BoundaryTests', 'ResidualGameTests', 'SemanticBasisTests', 'RepresentationTests', 'FixedSetTests']
+                        'CausalFoundations.SemanticBasis', 'CausalFoundations.Representation', 'CausalFoundations.FixedSet',
+                        'CausalFoundations.OrbitErasure']
+        test_modules = ['BoundaryTests', 'ResidualGameTests', 'SemanticBasisTests', 'RepresentationTests', 'FixedSetTests', 'OrbitErasureTests']
         module_files = {name: name.replace('.', '/') + '.lean'
                         for name in main_modules + test_modules}
         proof_files = ['CausalFoundations.lean', 'AxiomAudit.lean', 'ReplayAll.lean', *module_files.values()]
@@ -165,13 +166,13 @@ def main():
             wanted = {name: expected[name] for name in declared[module]}
             bx.update(audit(run(f'{number:02d}_{module}', ['lake', 'env', 'lean',
                 module_files[module], '-o', f'.lake/build/lib/lean/{module}.olean']), wanted))
-        run('09_rejected_false_statement', ['lake', 'env', 'lean', 'NegativeControl.lean'],
+        run('10_rejected_false_statement', ['lake', 'env', 'lean', 'NegativeControl.lean'],
             expect_failure=True)
-        checker_commit = run('10_checker_identity', ['git', '-C', checker, 'rev-parse', 'HEAD']).strip()
+        checker_commit = run('11_checker_identity', ['git', '-C', checker, 'rev-parse', 'HEAD']).strip()
         require(checker_commit == pins['checker_commit'], 'Unexpected lean4checker commit.')
         require(not subprocess.check_output(['git', 'status', '--porcelain', '--untracked-files=no'],
                     cwd=checker, text=True).strip(), 'The checker has modified tracked sources.')
-        run('11_checker_build', ['lake', 'build', 'Lean4Checker'], cwd=checker)
+        run('12_checker_build', ['lake', 'build', 'Lean4Checker'], cwd=checker)
 
         def replay(label, project, module):
             paths = os.pathsep.join([str(project / '.lake/build/lib/lean'),
@@ -179,31 +180,31 @@ def main():
             return run(label, ['lean', '--run', checker / 'Main.lean', '--fresh', '-v', module],
                        cwd=project, extra={'LEAN_PATH': paths})
 
-        run('12_replay_target_build', ['lake', 'env', 'lean', 'ReplayAll.lean',
+        run('13_replay_target_build', ['lake', 'env', 'lean', 'ReplayAll.lean',
             '-o', '.lake/build/lib/lean/ReplayAll.olean'])
-        replay('13_fresh_all_declarations', root, 'ReplayAll')
+        replay('14_fresh_all_declarations', root, 'ReplayAll')
         with tempfile.TemporaryDirectory(prefix='cf-lean-cold-') as temp:
             cold = Path(temp)
             for name in proof_files + ['NegativeControl.lean', 'lean-toolchain', 'lakefile.toml']:
                 target = cold / name
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(root / name, target)
-            run('14_cold_build', ['lake', 'build', 'CausalFoundations'], cwd=cold)
-            cold_ax = audit(run('15_cold_axioms', ['lake', 'env', 'lean', 'AxiomAudit.lean'],
+            run('15_cold_build', ['lake', 'build', 'CausalFoundations'], cwd=cold)
+            cold_ax = audit(run('16_cold_axioms', ['lake', 'env', 'lean', 'AxiomAudit.lean'],
                                 cwd=cold), expected_main)
             require(ax == cold_ax, 'Cold rebuild changed the axiom audit.')
             cold_bx = {}
-            for number, module in enumerate(test_modules, start=16):
+            for number, module in enumerate(test_modules, start=17):
                 wanted = {name: expected[name] for name in declared[module]}
                 cold_bx.update(audit(run(f'{number:02d}_cold_{module}', ['lake', 'env', 'lean',
                     module_files[module], '-o', f'.lake/build/lib/lean/{module}.olean'],
                     cwd=cold), wanted))
             require(bx == cold_bx, 'Cold rebuild changed the boundary dependency audit.')
-            run('21_cold_replay_target_build', ['lake', 'env', 'lean', 'ReplayAll.lean',
+            run('23_cold_replay_target_build', ['lake', 'env', 'lean', 'ReplayAll.lean',
                 '-o', '.lake/build/lib/lean/ReplayAll.olean'], cwd=cold)
-            replay('22_cold_fresh_all_declarations', cold, 'ReplayAll')
+            replay('24_cold_fresh_all_declarations', cold, 'ReplayAll')
         result.update({
-            'published_numbered_endpoints_completed': ['Theorem 13', 'Theorem 14', 'Theorem 15', 'Theorem 16'],
+            'published_numbered_endpoints_completed': ['Theorem 2', 'Theorem 13', 'Theorem 14', 'Theorem 15', 'Theorem 16'],
             'published_numbered_endpoint_branches_completed': ['Theorem 1/deterministic'],
             'unformalized_branches': ['Theorem 1/stochastic'],
             'status': 'PASS_LOCAL_WITH_DISCLOSED_COMPATIBILITY' if args.compat_library
@@ -211,14 +212,15 @@ def main():
             'main_proof_declarations_audited': len(ax),
             'boundary_test_theorems_audited': len(bx),
             'axioms': {**ax, **bx}, 'custom_axioms': [], 'omitted_proofs': [],
-            'native_evaluation_axioms': [], 'theorem13_axioms': ax['CausalFoundations.theorem13'],
+            'native_evaluation_axioms': [], 'theorem2_axioms': ax['CausalFoundations.theorem2'],
+            'theorem13_axioms': ax['CausalFoundations.theorem13'],
             'theorem14_axioms': ax['CausalFoundations.theorem14'],
             'theorem15_axioms': ax['CausalFoundations.theorem15'],
             'theorem16_axioms': ax['CausalFoundations.theorem16'],
             'theorem1_deterministic_axioms': ax['CausalFoundations.theorem1_deterministic'],
             'toolchain': {'version': version.strip(), 'lock_sha256': digest(root / 'verification/TOOLCHAIN_LOCK.json')},
             'checker': {'commit': checker_commit, 'mode': '--fresh; same Lean kernel',
-                        'target': 'ReplayAll', 'scope': 'All constants of all five proof and all five test modules, including transitive imports'},
+                        'target': 'ReplayAll', 'scope': 'All constants of all six proof and all six test modules, including transitive imports'},
             'cold_rebuild': {'source_copy_only': True, 'axiom_outputs_equal': True,
                              'fresh_kernel_replay_passed': True},
         })
@@ -230,6 +232,7 @@ def main():
         result['finished_utc'] = datetime.now(timezone.utc).isoformat()
         save()
     print(json.dumps({'status': result['status'], 'steps': len(records),
+                      'theorem2_axioms': result['theorem2_axioms'],
                       'theorem13_axioms': result['theorem13_axioms'],
                       'theorem14_axioms': result['theorem14_axioms'],
                       'theorem15_axioms': result['theorem15_axioms'],

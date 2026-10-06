@@ -4,3 +4,4 @@ import ResidualGameTests
 import SemanticBasisTests
 import RepresentationTests
 import FixedSetTests
+import OrbitErasureTests

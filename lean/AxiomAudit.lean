@@ -106,3 +106,24 @@ import CausalFoundations
 #print axioms CausalFoundations.Symmetry.assay_fixed
 #print axioms CausalFoundations.Symmetry.assay_fixed_formula
 #print axioms CausalFoundations.theorem1_deterministic
+
+#print axioms CausalFoundations.Symmetry.inverse_act_act
+#print axioms CausalFoundations.Symmetry.orbit_symm
+#print axioms CausalFoundations.Symmetry.orbit_trans
+#print axioms CausalFoundations.Symmetry.orbit_class_eq_iff
+#print axioms CausalFoundations.Symmetry.orbit_class_act
+#print axioms CausalFoundations.Symmetry.stable_orbit_membership
+#print axioms CausalFoundations.Symmetry.restrict_equivariance
+#print axioms CausalFoundations.Symmetry.factor_restrict
+#print axioms CausalFoundations.Symmetry.factor_orbit_constant
+#print axioms CausalFoundations.Symmetry.factor_invariant
+#print axioms CausalFoundations.Symmetry.factor_fixed
+#print axioms CausalFoundations.Symmetry.factor_singleton
+#print axioms CausalFoundations.Symmetry.factor_no_contingency
+#print axioms CausalFoundations.Symmetry.nontrivial_prevents_factorization
+#print axioms CausalFoundations.Symmetry.reachable_least
+#print axioms CausalFoundations.Symmetry.reachable_stable
+#print axioms CausalFoundations.Symmetry.allowed_step_equivariant
+#print axioms CausalFoundations.Symmetry.reachable_family_stable
+#print axioms CausalFoundations.Symmetry.reachable_erasure_fixed
+#print axioms CausalFoundations.theorem2
