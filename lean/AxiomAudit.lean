@@ -86,3 +86,23 @@ import CausalFoundations
 #print axioms CausalFoundations.Representation.minimal_transport
 #print axioms CausalFoundations.Representation.maximal_domain_transport
 #print axioms CausalFoundations.theorem16
+
+#print axioms CausalFoundations.Symmetry.group_left_cancel
+#print axioms CausalFoundations.Symmetry.inverse_identity
+#print axioms CausalFoundations.Symmetry.inverse_product
+#print axioms CausalFoundations.Symmetry.orbit_self
+#print axioms CausalFoundations.Symmetry.fixed_iff_singleton_orbit
+#print axioms CausalFoundations.Symmetry.fixed_no_nontrivial_orbit
+#print axioms CausalFoundations.Symmetry.equivariant_fixed
+#print axioms CausalFoundations.Symmetry.equivariant_composition
+#print axioms CausalFoundations.Symmetry.fixed_no_contingency
+#print axioms CausalFoundations.Symmetry.evolution_fixed
+#print axioms CausalFoundations.Symmetry.evolution_channel_fixed
+#print axioms CausalFoundations.Symmetry.evolution_no_contingency
+#print axioms CausalFoundations.Symmetry.trajectory_equivariant
+#print axioms CausalFoundations.Symmetry.trajectory_fixed
+#print axioms CausalFoundations.Symmetry.trajectory_channel_fixed
+#print axioms CausalFoundations.Symmetry.channel_action_formula
+#print axioms CausalFoundations.Symmetry.assay_fixed
+#print axioms CausalFoundations.Symmetry.assay_fixed_formula
+#print axioms CausalFoundations.theorem1_deterministic
