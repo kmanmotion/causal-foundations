@@ -33,7 +33,8 @@
     "Theorem 14, universal nonanticipating residual policies, maximal residual invariance and viable subfibers in an arbitrary commutative resource monoid",
     "Theorem 15, semantic sufficient-basis quotient partial order, upper set and minimal-class/maximal-conjunction-domain equivalence for a fixed finite premise library",
     "Theorem 16, constructed order isomorphism of semantic sufficient-basis posets under bijective ambient-model and atom transport, with minimal-class and maximal-conjunction-domain invariance",
-    "Theorem 1 deterministic branch only, fixed states under group actions, constructed inverse-relabeling channel action and equivariant deterministic evolution; stochastic branch remains NOT_FORMALIZED"
+    "Theorem 1 deterministic branch only, fixed states under group actions, constructed inverse-relabeling channel action and equivariant deterministic evolution; stochastic branch remains NOT_FORMALIZED",
+    "Theorem 2, actual state-action orbit quotient, factorization and assay equivariance restricted to a group-stable domain; stable finite-path reachability derived from stable preparation and equivariant transition/intervention families"
   ],
   "whole_paper_formalized": false
 }
