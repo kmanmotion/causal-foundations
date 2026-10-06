@@ -2,3 +2,4 @@ import CausalFoundations
 import BoundaryTests
 import ResidualGameTests
 import SemanticBasisTests
+import RepresentationTests
