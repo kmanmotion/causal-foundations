@@ -1,9 +1,9 @@
-# Published-paper formalization inventory — v0.4.0
+# Published-paper formalization inventory — v0.5.0
 
 Baseline: Causal Foundations v1.0, DOI 10.5281/zenodo.22902457.
 This is a source-bound implementation inventory, not a fresh proof audit of all
 entries. `COMPLETE` below is conditional on a passing `verification/run/results.json`
-for the exact delivered source hash. All other entries remain `NOT_FORMALIZED`.
+for the exact delivered source hash. Partial branches are labelled explicitly; all remaining entries stay `NOT_FORMALIZED`.
 The current assistant performed the semantic reading; no independent reviewer is
 claimed. Dependencies below describe mathematical needs, not a claim that the
 corresponding mathlib API has already been found or tested.
@@ -12,7 +12,7 @@ corresponding mathlib API has already been found or tested.
 
 | ID; main-text location | Target and indispensable scope | Principal formal dependencies | Status |
 |---|---|---|---|
-| T01; §3.1 | Equivariant maps/evolution preserve exactly fixed realized states; the separate stochastic part is simultaneous only on the declared countable actual-update sequence | Group actions, fixed sets; actual conditional kernels, conditional expectation, measurable sets, countable null union for stochastic branch | NOT_FORMALIZED |
+| T01; §3.1, p.5 | Equivariant maps/evolution preserve exactly fixed realized states; the stochastic part is simultaneous only on the declared countable actual-update sequence | Constructed group/channel actions and deterministic fixed-set proof in THEOREM1_DETERMINISTIC_ALIGNMENT.md; stochastic branch still needs actual conditional kernels, measurable fixed sets, conditional expectation and countable null union | PARTIAL — deterministic COMPLETE; stochastic NOT_FORMALIZED |
 | T02; §3.2 | An equivariant channel factoring through the orbit quotient on a group-stable reachable domain is fixed | Group action, stable domain, quotient factorization, equality of channels | NOT_FORMALIZED |
 | T03; §3.3 | Equal first-hit probabilities on a finite transitive orientation orbit | Finite group, measurable invariant path law, disjoint cells, actual attained first entry outside invariant null set, finite horizon; positive hit probability only for conditioning | NOT_FORMALIZED |
 | T04; §3.4 | Empty-matching stochastic genesis with a frozen assignment assay and organization ablation | Finite partial matchings, uniform rates on unmatched pairs, CTMC holding times, combinatorial counting, declared origin ontology and assay semantics | NOT_FORMALIZED |
@@ -82,8 +82,8 @@ the explicitly isolated boundary tests in U21.
 2. T14 residual-invariant characterization (complete), including general
    nonanticipating stream policies and the derived memoryless selector.
 3. T15 semantic quotient poset and T16 semantic transport (complete), followed
-   by symmetry/quotient blocks. Start with T01's deterministic branch and keep
-   its stochastic branch separate until both are proved.
+   by symmetry/quotient blocks. T01's deterministic branch is complete; T02's
+   symmetry-quotient theorem is next. T01's stochastic branch remains separate.
 4. Probability kernels, TV contraction, causal certificates and composition.
 5. Robustness/statistics plus the complete finite joint witness, then a final
    theorem-by-theorem semantic alignment and dependency closure audit.
@@ -91,5 +91,5 @@ the explicitly isolated boundary tests in U21.
 This order is a proposal for the separately authorized verification track, not a
 change to the main AURORA research task. Work estimates await API/dependency
 prototypes; no automatic conversion or whole-paper completion date is promised.
-Four completed endpoints out of 16 numbered endpoints are NOT a meaningful
+Four complete endpoints and one partial deterministic branch do NOT provide a meaningful
 percentage of total mathematical work. No whole-paper certification is claimed.

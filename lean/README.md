@@ -1,6 +1,7 @@
-# Causal Foundations — Lean 4 formalization v0.4.0
+# Causal Foundations — Lean 4 formalization v0.5.0
 
-This supplement formalizes **Theorems 13, 14, 15 and 16** of Kai Liang's
+This supplement formalizes **Theorems 13, 14, 15 and 16** and the
+**deterministic branch of Theorem 1** of Kai Liang's
 *Causal Foundations and Experimental Certification of Contingent Assignment,
 Heredity, and Reflexive Maintenance*, v1.0,
 [DOI 10.5281/zenodo.22902457](https://doi.org/10.5281/zenodo.22902457).
@@ -23,18 +24,27 @@ Heredity, and Reflexive Maintenance*, v1.0,
   isomorphism of sufficient semantic classes. Minimal bases and maximal
   conjunction-generated domains are invariant under this transport.
 
-See the [Theorem 13 alignment](STATEMENT_ALIGNMENT.md),
+- `CausalFoundations.theorem1_deterministic`: the paper's inverse channel
+  relabeling action is constructed. Equivariant assays send exactly fixed
+  realized states to singleton channel orbits. Exactly equivariant deterministic
+  evolution preserves those fixed states and excludes contingent assignment
+  from them. Theorem 1's stochastic branch remains unformalized.
+
+See the [Theorem 1 deterministic alignment](THEOREM1_DETERMINISTIC_ALIGNMENT.md),
+[Theorem 13 alignment](STATEMENT_ALIGNMENT.md),
 [Theorem 14 alignment](THEOREM14_ALIGNMENT.md),
 [Theorem 15 alignment](THEOREM15_ALIGNMENT.md),
 [Theorem 16 alignment](THEOREM16_ALIGNMENT.md), and
-[coverage inventory](THEOREM_COVERAGE.md). The other 12 numbered theorems and
-remaining supplementary obligations are not claimed to be formalized.
+[coverage inventory](THEOREM_COVERAGE.md). Theorem 1 has partial completion status: its stochastic branch remains
+unformalized. The other 11 numbered theorems and remaining supplementary
+obligations are not claimed to be formalized.
 
-There are **85 audited main theorem declarations and 27 boundary-test theorems**.
+There are **104 audited main theorem declarations and 35 boundary-test theorems**.
 These include auxiliary lemmas and are not counts of new research discoveries.
 Theorem 13 depends on the standard `Classical.choice`; Theorem 14 depends on the
 standard `propext`, `Classical.choice` and `Quot.sound`; Theorems 15 and 16 depend on
-`propext` and `Quot.sound`. Every transitive dependency
+`propext` and `Quot.sound`. Theorem 1's deterministic endpoint uses only
+`Quot.sound`. Every transitive dependency
 is checked against an explicit list. Omitted proofs and custom dependencies fail
 verification. The Boolean positive example and truncated-addition negative example
 check that Theorem 14 neither silently assumes cancellation nor claims every
@@ -43,6 +53,9 @@ The semantic tests check aliases, ambient restriction, direction of entailment,
 and failure of an enlarged-formula interpretation of domain maximality.
 Representation tests also check model/atom relabeling, empty inputs and
 counterexamples to weakening the transport conditions.
+Fixed-set tests distinguish realized-state fixedness from invariant equal
+weights, test inverse channel relabeling and expose the need for both
+assay and evolution equivariance.
 
 ## Reproduce
 
@@ -56,6 +69,7 @@ lake env lean BoundaryTests.lean -o .lake/build/lib/lean/BoundaryTests.olean
 lake env lean ResidualGameTests.lean -o .lake/build/lib/lean/ResidualGameTests.olean
 lake env lean SemanticBasisTests.lean -o .lake/build/lib/lean/SemanticBasisTests.olean
 lake env lean RepresentationTests.lean -o .lake/build/lib/lean/RepresentationTests.olean
+lake env lean FixedSetTests.lean -o .lake/build/lib/lean/FixedSetTests.olean
 ```
 
 For the complete checks, obtain the official
@@ -70,10 +84,10 @@ python3 verification/run_checks.py \
 ```
 
 The runner checks the three published PDF hashes, official executable hashes,
-all 112 theorem dependencies, rejection of a false statement, fresh kernel replay
-of all constants imported by `ReplayAll` (four proof modules and four test modules),
+all 139 theorem dependencies, rejection of a false statement, fresh kernel replay
+of all constants imported by `ReplayAll` (five proof modules and five test modules),
 and a clean source rebuild followed by the same complete replay. Main and boundary
-dependency audits must agree between the two builds. There are 20 command checks.
+dependency audits must agree between the two builds. There are 22 command checks.
 `NegativeControl.lean` deliberately contains an invalid proof of `2 = 3` and
 must fail compilation; it is excluded from the library and default build target.
 
@@ -104,6 +118,7 @@ Formal verification does not establish biochemical realization or historical
 origin claims. Publication and review status are described in the
 [repository README](../README.md).
 
-The proposed next target is Theorem 1's deterministic fixed-state equivariance
-branch. Its stochastic branch will retain a separate completion status until
-its probability and countable-update obligations are proved.
+The proposed next target is Theorem 2's symmetry-quotient erasure theorem on
+a group-stable reachable domain. Theorem 1's stochastic branch retains
+separate incomplete status until its conditional-probability and countable
+actual-update obligations are proved.

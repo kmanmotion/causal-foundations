@@ -284,5 +284,50 @@
   "CausalFoundations.RepresentationTests.two_atoms_cannot_be_bijectively_merged": [
     "propext",
     "Quot.sound"
-  ]
+  ],
+  "CausalFoundations.Symmetry.group_left_cancel": [],
+  "CausalFoundations.Symmetry.inverse_identity": [],
+  "CausalFoundations.Symmetry.inverse_product": [],
+  "CausalFoundations.Symmetry.orbit_self": [],
+  "CausalFoundations.Symmetry.fixed_iff_singleton_orbit": [],
+  "CausalFoundations.Symmetry.fixed_no_nontrivial_orbit": [],
+  "CausalFoundations.Symmetry.equivariant_fixed": [],
+  "CausalFoundations.Symmetry.equivariant_composition": [],
+  "CausalFoundations.Symmetry.fixed_no_contingency": [],
+  "CausalFoundations.Symmetry.evolution_fixed": [],
+  "CausalFoundations.Symmetry.evolution_channel_fixed": [],
+  "CausalFoundations.Symmetry.evolution_no_contingency": [],
+  "CausalFoundations.Symmetry.trajectory_equivariant": [],
+  "CausalFoundations.Symmetry.trajectory_fixed": [],
+  "CausalFoundations.Symmetry.trajectory_channel_fixed": [],
+  "CausalFoundations.Symmetry.channel_action_formula": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.assay_fixed": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Symmetry.assay_fixed_formula": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.theorem1_deterministic": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FixedSetTests.fixed_origin_stays_fixed_at_every_deterministic_step": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FixedSetTests.fixed_channel_can_have_response_contrast": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FixedSetTests.nonfixed_origin_can_have_nontrivial_channel_orbit": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FixedSetTests.neutral_equal_weights_do_not_fix_realizations": [],
+  "CausalFoundations.FixedSetTests.assay_equivariance_is_essential": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FixedSetTests.evolution_equivariance_is_essential": [],
+  "CausalFoundations.FixedSetTests.channel_action_uses_inverse_relabeling": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FixedSetTests.trivial_group_boundary": []
 }

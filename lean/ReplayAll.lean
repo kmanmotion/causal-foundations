@@ -3,3 +3,4 @@ import BoundaryTests
 import ResidualGameTests
 import SemanticBasisTests
 import RepresentationTests
+import FixedSetTests
