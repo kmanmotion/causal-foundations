@@ -67,3 +67,22 @@ import CausalFoundations
 #print axioms CausalFoundations.Semantic.sufficient_le_antisymm
 #print axioms CausalFoundations.Semantic.minimal_iff_maximal_domain
 #print axioms CausalFoundations.theorem15
+
+#print axioms CausalFoundations.Representation.basis_pull_push
+#print axioms CausalFoundations.Representation.basis_push_pull
+#print axioms CausalFoundations.Representation.holds_push_iff
+#print axioms CausalFoundations.Representation.domain_push_iff
+#print axioms CausalFoundations.Representation.ambient_forall_transport
+#print axioms CausalFoundations.Representation.semantic_eq_transport
+#print axioms CausalFoundations.Representation.domain_inclusion_transport
+#print axioms CausalFoundations.Representation.sufficient_transport
+#print axioms CausalFoundations.Representation.class_map_representative
+#print axioms CausalFoundations.Representation.class_pull_push
+#print axioms CausalFoundations.Representation.class_push_pull
+#print axioms CausalFoundations.Representation.class_order_transport
+#print axioms CausalFoundations.Representation.class_sufficient_transport
+#print axioms CausalFoundations.Representation.sufficient_pull_push
+#print axioms CausalFoundations.Representation.sufficient_push_pull
+#print axioms CausalFoundations.Representation.minimal_transport
+#print axioms CausalFoundations.Representation.maximal_domain_transport
+#print axioms CausalFoundations.theorem16

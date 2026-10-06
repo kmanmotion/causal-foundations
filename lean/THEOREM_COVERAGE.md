@@ -1,4 +1,4 @@
-# Published-paper formalization inventory — v0.3.0
+# Published-paper formalization inventory — v0.4.0
 
 Baseline: Causal Foundations v1.0, DOI 10.5281/zenodo.22902457.
 This is a source-bound implementation inventory, not a fresh proof audit of all
@@ -27,7 +27,7 @@ corresponding mathlib API has already been found or tested.
 | T13; §10.2, pp.19–20 | Finite sequential resource feasibility iff all aggregate prefixes are decomposable in a commutative cancellative monoid | Explicit monoid laws, finite-prefix recursion, cancellation, existential selection; source alignment in STATEMENT_ALIGNMENT.md | COMPLETE — Theorem 13 |
 | T14; §11.2 | Nonanticipating winning policies iff every root lies in the maximal residual invariant iff viable residual subfibers exist | Arbitrary commutative monoid, general prefix-causal policies on infinite streams, invariant-union closure, zero-padded continuations, memoryless reduction and viable subfibers; alignment in THEOREM14_ALIGNMENT.md | COMPLETE — Theorem 14 |
 | T15; §12.2, p.22 | Semantic sufficient-basis quotient poset; minimal classes correspond to maximal conjunction-generated domains | Fixed finite indexed premise library, actual ambient-equivalence quotient and well-defined domains, proved core partial-order instances, sufficient upper set and reverse inclusion; alignment in THEOREM15_ALIGNMENT.md | COMPLETE — Theorem 15 |
-| T16; §12.5 | Representation-invariant sufficient-basis posets under declared semantic transport | T15 objects; bijections preserving/reflecting ambient membership, target and every premise atom | NOT_FORMALIZED |
+| T16; §12.5, p.23 | Representation-invariant sufficient-basis posets under declared semantic transport | T15 objects; ambient subtype and atom bijections preserving/reflecting target and each atom, constructed quotient order isomorphism, minimal-class and maximal-domain invariance; alignment in THEOREM16_ALIGNMENT.md | COMPLETE — Theorem 16 |
 
 ## Important unnumbered results and supplementary obligations
 
@@ -81,9 +81,9 @@ the explicitly isolated boundary tests in U21.
 1. T13 source-bound pilot (this package).
 2. T14 residual-invariant characterization (complete), including general
    nonanticipating stream policies and the derived memoryless selector.
-3. T15 semantic quotient poset (complete); T16 semantic transport next, followed
-   by symmetry/quotient blocks. Split T01's deterministic and stochastic branches
-   explicitly until both are proved.
+3. T15 semantic quotient poset and T16 semantic transport (complete), followed
+   by symmetry/quotient blocks. Start with T01's deterministic branch and keep
+   its stochastic branch separate until both are proved.
 4. Probability kernels, TV contraction, causal certificates and composition.
 5. Robustness/statistics plus the complete finite joint witness, then a final
    theorem-by-theorem semantic alignment and dependency closure audit.
@@ -91,5 +91,5 @@ the explicitly isolated boundary tests in U21.
 This order is a proposal for the separately authorized verification track, not a
 change to the main AURORA research task. Work estimates await API/dependency
 prototypes; no automatic conversion or whole-paper completion date is promised.
-Three completed endpoints out of 16 numbered endpoints are NOT a meaningful
+Four completed endpoints out of 16 numbered endpoints are NOT a meaningful
 percentage of total mathematical work. No whole-paper certification is claimed.

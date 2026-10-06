@@ -200,5 +200,89 @@
   "CausalFoundations.Tests.two_branch_bases_sufficient": [],
   "CausalFoundations.Tests.disjunction_not_conjunction_generated": [
     "propext"
+  ],
+  "CausalFoundations.Representation.basis_pull_push": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.basis_push_pull": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.holds_push_iff": [],
+  "CausalFoundations.Representation.domain_push_iff": [],
+  "CausalFoundations.Representation.ambient_forall_transport": [],
+  "CausalFoundations.Representation.semantic_eq_transport": [
+    "propext"
+  ],
+  "CausalFoundations.Representation.domain_inclusion_transport": [
+    "propext"
+  ],
+  "CausalFoundations.Representation.sufficient_transport": [
+    "propext"
+  ],
+  "CausalFoundations.Representation.class_map_representative": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.class_pull_push": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.class_push_pull": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.class_order_transport": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.class_sufficient_transport": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.sufficient_pull_push": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.sufficient_push_pull": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.minimal_transport": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.Representation.maximal_domain_transport": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.theorem16": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.RepresentationTests.nontrivial_model_and_atom_renaming": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.RepresentationTests.unmatched_carrier_point_is_excluded": [],
+  "CausalFoundations.RepresentationTests.source_basis_minimal": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.RepresentationTests.renamed_minimum_and_maximal_domain": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.RepresentationTests.empty_ambient_and_library_allow_vacuous_transport": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.RepresentationTests.one_way_atom_preservation_is_insufficient": [],
+  "CausalFoundations.RepresentationTests.target_preservation_is_essential": [],
+  "CausalFoundations.RepresentationTests.model_surjectivity_is_essential": [],
+  "CausalFoundations.RepresentationTests.two_atoms_cannot_be_bijectively_merged": [
+    "propext",
+    "Quot.sound"
   ]
 }
