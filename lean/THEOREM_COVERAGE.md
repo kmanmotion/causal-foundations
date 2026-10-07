@@ -1,9 +1,9 @@
-# Published-paper formalization inventory — v0.6.0
+# Published-paper formalization inventory — v0.7.0
 
 Baseline: Causal Foundations v1.0, DOI 10.5281/zenodo.22902457.
 This is a source-bound implementation inventory, not a fresh proof audit of all
 entries. `COMPLETE` below is conditional on a passing `verification/run/results.json`
-for the exact delivered source hash. Partial branches are labelled explicitly; all remaining entries stay `NOT_FORMALIZED`.
+for the exact delivered source hash. T03 additionally requires `probability/verification/run/results.json` on that same commit. Partial branches are labelled explicitly; all remaining entries stay `NOT_FORMALIZED`.
 The current assistant performed the semantic reading; no independent reviewer is
 claimed. Dependencies below describe mathematical needs, not a claim that the
 corresponding mathlib API has already been found or tested.
@@ -14,7 +14,7 @@ corresponding mathlib API has already been found or tested.
 |---|---|---|---|
 | T01; §3.1, p.5 | Equivariant maps/evolution preserve exactly fixed realized states; the stochastic part is simultaneous only on the declared countable actual-update sequence | Constructed group/channel actions and deterministic fixed-set proof in THEOREM1_DETERMINISTIC_ALIGNMENT.md; stochastic branch still needs actual conditional kernels, measurable fixed sets, conditional expectation and countable null union | PARTIAL — deterministic COMPLETE; stochastic NOT_FORMALIZED |
 | T02; §3.2, pp.5–6 | An equivariant channel factoring through the orbit quotient on a group-stable reachable domain is fixed | Constructed orbit quotient, restricted factorization/equivariance, stable finite-path reachability; see THEOREM2_ALIGNMENT.md | COMPLETE |
-| T03; §3.3 | Equal first-hit probabilities on a finite transitive orientation orbit | Finite group, measurable invariant path law, disjoint cells, actual attained first entry outside invariant null set, finite horizon; positive hit probability only for conditioning | NOT_FORMALIZED |
+| T03; §3.3, p.6 | Equal first-hit probabilities on a finite transitive orientation orbit | Pinned Mathlib probability measure; measurable invariant path law, disjoint cells, actual attained first entry outside invariant null set, finite horizon; positive hit probability only for conditioning; see THEOREM3_ALIGNMENT.md | COMPLETE |
 | T04; §3.4 | Empty-matching stochastic genesis with a frozen assignment assay and organization ablation | Finite partial matchings, uniform rates on unmatched pairs, CTMC holding times, combinatorial counting, declared origin ontology and assay semantics | NOT_FORMALIZED |
 | T05; §4.1 | Same passive path laws can have different decoder-free provenance | Explicit emergent/dormant witness pair; equality of observed path measures; randomized-test indistinguishability; supplement S1 | NOT_FORMALIZED |
 | T06; §4.2 | Adaptive input-only control does not universally identify hidden provenance | T05 witness interface, adaptive policy measurability, induction/coupling of transcripts; no hidden-organization inspection; S2 | NOT_FORMALIZED |
@@ -83,7 +83,7 @@ the explicitly isolated boundary tests in U21.
    nonanticipating stream policies and the derived memoryless selector.
 3. T15 semantic quotient poset and T16 semantic transport (complete), followed
    by symmetry/quotient blocks. T01's deterministic branch is complete; T02's
-   symmetry-quotient theorem is complete; T03's probability foundation is next. T01's stochastic branch remains separate.
+   symmetry-quotient theorem is complete; T03's actual first-hit probability theorem is complete; T04's finite matching genesis construction is next. T01's stochastic branch remains separate.
 4. Probability kernels, TV contraction, causal certificates and composition.
 5. Robustness/statistics plus the complete finite joint witness, then a final
    theorem-by-theorem semantic alignment and dependency closure audit.
@@ -91,5 +91,5 @@ the explicitly isolated boundary tests in U21.
 This order is a proposal for the separately authorized verification track, not a
 change to the main AURORA research task. Work estimates await API/dependency
 prototypes; no automatic conversion or whole-paper completion date is promised.
-Five complete endpoints and one partial deterministic branch do NOT provide a meaningful
+Six complete endpoints and one partial deterministic branch do NOT provide a meaningful
 percentage of total mathematical work. No whole-paper certification is claimed.

@@ -1,6 +1,6 @@
-# Causal Foundations — Lean 4 formalization v0.6.0
+# Causal Foundations — Lean 4 formalization v0.7.0
 
-This supplement formalizes **Theorems 2, 13, 14, 15 and 16** and the
+This supplement formalizes **Theorems 2, 3, 13, 14, 15 and 16** and the
 **deterministic branch of Theorem 1** of Kai Liang's
 *Causal Foundations and Experimental Certification of Contingent Assignment,
 Heredity, and Reflexive Maintenance*, v1.0,
@@ -35,22 +35,31 @@ Heredity, and Reflexive Maintenance*, v1.0,
   evolution preserves those fixed states and excludes contingent assignment
   from them. Theorem 1's stochastic branch remains unformalized.
 
-See the [Theorem 2 alignment](THEOREM2_ALIGNMENT.md),
+- `CausalFoundations.theorem3`: actual first-hit orientation events on a finite
+  transitive orbit have equal probabilities under an invariant path probability
+  law. Actual attainment, measurability and an invariant null exception set are
+  explicit. Conditional uniformity requires positive hit probability. This
+  endpoint is in the [probability subproject](probability/README.md).
+
+See the [Theorem 3 alignment](THEOREM3_ALIGNMENT.md),
+[Theorem 2 alignment](THEOREM2_ALIGNMENT.md),
 [Theorem 1 deterministic alignment](THEOREM1_DETERMINISTIC_ALIGNMENT.md),
 [Theorem 13 alignment](STATEMENT_ALIGNMENT.md),
 [Theorem 14 alignment](THEOREM14_ALIGNMENT.md),
 [Theorem 15 alignment](THEOREM15_ALIGNMENT.md),
 [Theorem 16 alignment](THEOREM16_ALIGNMENT.md), and
 [coverage inventory](THEOREM_COVERAGE.md). Theorem 1 has partial completion status: its stochastic branch remains
-unformalized. The other 10 numbered theorems and remaining supplementary
+unformalized. The other 9 numbered theorems and remaining supplementary
 obligations are not claimed to be formalized.
 
-There are **124 audited main theorem declarations and 44 boundary-test theorems**.
+There are **145 audited main theorem declarations and 56 boundary-test theorems**
+across the core and probability subprojects (201 total). The original core has
+124 main and 44 test theorems; Theorem 3 adds 21 main and 12 test theorems.
 These include auxiliary lemmas and are not counts of new research discoveries.
 Theorem 13 depends on the standard `Classical.choice`; Theorem 14 depends on the
 standard `propext`, `Classical.choice` and `Quot.sound`; Theorems 15 and 16 depend on
 `propext` and `Quot.sound`. Theorem 2 and Theorem 1's deterministic endpoint use only
-`Quot.sound`. Every transitive dependency
+`Quot.sound`. Theorem 3 uses `propext`, `Classical.choice` and `Quot.sound`. Every transitive dependency
 is checked against an explicit list. Omitted proofs and custom dependencies fail
 verification. The Boolean positive example and truncated-addition negative example
 check that Theorem 14 neither silently assumes cancellation nor claims every
@@ -68,7 +77,9 @@ families and empty preparation.
 
 ## Reproduce
 
-The toolchain is pinned to `leanprover/lean4:v4.24.0`. No mathlib is needed.
+The toolchain is pinned to `leanprover/lean4:v4.24.0`. The original core needs no Mathlib. The separate probability subproject pins
+Mathlib and all supporting repositories; use its [reproduction instructions](probability/README.md)
+to verify Theorem 3 as well.
 From this directory, with Lean and Lake installed:
 
 ```sh
@@ -94,16 +105,20 @@ python3 verification/run_checks.py \
 ```
 
 The runner checks the three published PDF hashes, official executable hashes,
-all 168 theorem dependencies, rejection of a false statement, fresh kernel replay
+all 168 core theorem dependencies, rejection of a false statement, fresh kernel replay
 of all constants imported by `ReplayAll` (six proof modules and six test modules),
 and a clean source rebuild followed by the same complete replay. Main and boundary
-dependency audits must agree between the two builds. There are 24 command checks.
+dependency audits must agree between the two builds. There are 24 core command checks. The probability runner adds 16 checks, including
+all 33 new declarations and two fresh replays with transitive Mathlib imports.
+Its cold project build reuses the pinned external dependency cache and copies
+no compiled project files. Both runners must pass for v0.7.0 (40 checks total).
 `NegativeControl.lean` deliberately contains an invalid proof of `2 = 3` and
 must fail compilation; it is excluded from the library and default build target.
 
 [GitHub Actions](https://github.com/kmanmotion/causal-foundations/actions/workflows/lean.yml)
 runs these checks on standard Ubuntu for relevant pushes and pull requests.
-Each run uploads `results.json` and command logs for 14 days. The run result
+Each run uploads separate core and probability artifacts containing
+`results.json` and command logs for 14 days. The run result
 and its exact checked commit determine verification status; this README alone
 is not evidence that a particular commit passed. CI requires a clean checkout.
 
@@ -122,13 +137,15 @@ For an affected local environment only, the runner accepts a compiled
 
 Fresh replay uses the same Lean kernel, not an independently implemented
 verifier. Paper-to-formal-statement alignment was reviewed by the assisting AI;
-it has not received independent human certification. The selected strategies
-are set-theoretic, with no assertion of measurability, continuity or computability.
+it has not received independent human certification. Theorem 14
+selectors remain set-theoretic, without a claim of measurability, continuity or
+computability. Theorem 3 instead assumes the declared measurable first-time and
+label maps and uses an actual probability measure.
 Formal verification does not establish biochemical realization or historical
 origin claims. Publication and review status are described in the
 [repository README](../README.md).
 
-The proposed next target is Theorem 3's equal-orbit first hitting, including
-an actually attained measurable first entry and an invariant probability law. Theorem 1's stochastic branch retains
+The proposed next target is Theorem 4's finite matching genesis construction,
+starting with partial matchings, the frozen challenge assay and single-link ablation. Theorem 1's stochastic branch retains
 separate incomplete status until its conditional-probability and countable
 actual-update obligations are proved.

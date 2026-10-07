@@ -1,0 +1,64 @@
+{
+  "schema": "causal-foundations-probability-dependency-lock-v1",
+  "lean_toolchain": "leanprover/lean4:v4.24.0",
+  "mathlib_tag": "v4.24.0",
+  "mathlib_commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "manifest_sha256": "cf7cec5c9c0015b27fe17bad6b1d2edeb5a6d80a003b26cbf5ffd268f92e3ccb",
+  "cache_roots": [
+    "Mathlib.MeasureTheory.Measure.Typeclasses.Probability",
+    "Mathlib.MeasureTheory.Measure.Dirac"
+  ],
+  "repositories": [
+    {
+      "name": "mathlib",
+      "repository": "https://github.com/leanprover-community/mathlib4.git",
+      "commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
+    },
+    {
+      "name": "plausible",
+      "repository": "https://github.com/leanprover-community/plausible",
+      "commit": "dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805"
+    },
+    {
+      "name": "LeanSearchClient",
+      "repository": "https://github.com/leanprover-community/LeanSearchClient",
+      "commit": "99657ad92e23804e279f77ea6dbdeebaa1317b98"
+    },
+    {
+      "name": "importGraph",
+      "repository": "https://github.com/leanprover-community/import-graph",
+      "commit": "d768126816be17600904726ca7976b185786e6b9"
+    },
+    {
+      "name": "proofwidgets",
+      "repository": "https://github.com/leanprover-community/ProofWidgets4",
+      "commit": "556caed0eadb7901e068131d1be208dd907d07a2"
+    },
+    {
+      "name": "aesop",
+      "repository": "https://github.com/leanprover-community/aesop",
+      "commit": "725ac8cd67acd70a7beaf47c3725e23484c1ef50"
+    },
+    {
+      "name": "Qq",
+      "repository": "https://github.com/leanprover-community/quote4",
+      "commit": "dea6a3361fa36d5a13f87333dc506ada582e025c"
+    },
+    {
+      "name": "batteries",
+      "repository": "https://github.com/leanprover-community/batteries",
+      "commit": "8da40b72fece29b7d3fe3d768bac4c8910ce9bee"
+    },
+    {
+      "name": "Cli",
+      "repository": "https://github.com/leanprover/lean4-cli",
+      "commit": "91c18fa62838ad0ab7384c03c9684d99d306e1da"
+    }
+  ],
+  "core_dependency": {
+    "type": "path",
+    "dir": "..",
+    "name": "causal_foundations_lean"
+  },
+  "compiled_dependency_cache_is_proof_evidence": false
+}
