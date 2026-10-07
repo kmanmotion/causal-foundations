@@ -159,5 +159,25 @@
     "propext",
     "Classical.choice",
     "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.padded_coin_invariant": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.padded_hit_univ": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.exceptional_hit_nontransported_label": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.padded_probability_half": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
   ]
 }

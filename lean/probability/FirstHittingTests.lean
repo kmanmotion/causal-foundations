@@ -63,14 +63,10 @@ noncomputable def coinModel : Model (Time := ℕ) flipGroup flipAction flipActio
     exact ⟨0, ω, rfl, ⟨⟨le_rfl, le_rfl, ω, rfl⟩, fun _ hs => hs.1⟩, rfl, rfl⟩
   off_time := by
     intro ω h
-    rcases h with h | h
-    · exact False.elim (h ⟨0, le_rfl, le_rfl, ω, rfl⟩)
-    · exact False.elim h
+    exact False.elim (h ⟨0, le_rfl, le_rfl, ω, rfl⟩)
   off_orientation := by
     intro ω h
-    rcases h with h | h
-    · exact False.elim (h ⟨0, le_rfl, le_rfl, ω, rfl⟩)
-    · exact False.elim h
+    exact False.elim (h ⟨0, le_rfl, le_rfl, ω, rfl⟩)
   path_law_invariant := coin_invariant
 
 theorem coin_hit_univ : Hit coinModel.process coinModel.cells coinModel.horizon = univ := by
@@ -127,6 +123,85 @@ theorem nonnull_exception_cannot_be_ignored :
     rw [hempty, measure_empty, measure_univ]
     exact ne_of_lt (ENNReal.div_pos (by simp) (by simp))
 
+/-- The second coordinate marks distinct paths with zero probability. -/
+def paddedAction : Action flipGroup (Bool × Bool) where
+  act g ω := (flipAction.act g ω.1, ω.2)
+  identity_act := by rintro ⟨b, n⟩; cases b <;> rfl
+  product_act := by
+    rintro g h ⟨b, n⟩
+    cases g <;> cases h <;> cases b <;> rfl
+
+noncomputable def paddedCoin : Measure (Bool × Bool) :=
+  (2 : ℝ≥0∞)⁻¹ • (Measure.dirac (false, false) + Measure.dirac (true, false))
+
+instance padded_coin_probability : IsProbabilityMeasure paddedCoin := by
+  constructor
+  simp only [paddedCoin, Measure.smul_apply, smul_eq_mul, Measure.add_apply, measure_univ]
+  simpa only [one_add_one_eq_two] using
+    (ENNReal.inv_mul_cancel (a := (2 : ℝ≥0∞)) (by simp) (by simp))
+
+theorem padded_coin_invariant (g : Bool) : paddedCoin.map (paddedAction.act g) = paddedCoin := by
+  have hm : Measurable (paddedAction.act g) := measurable_of_countable _
+  unfold paddedCoin
+  rw [Measure.map_smul, Measure.map_add _ _ hm, Measure.map_dirac hm, Measure.map_dirac hm]
+  cases g <;> simp [paddedAction, flipAction, Bool.xor, add_comm]
+
+/-- Null exceptional hits retain labels that need not transport under the action. -/
+noncomputable def paddedModel :
+    Model (Time := ℕ) flipGroup paddedAction paddedAction flipAction paddedCoin where
+  horizon := 0
+  process := fun _ ω => ω
+  cells := fun θ => {s | s.1 = θ}
+  path_measurable := fun _ => measurable_of_countable _
+  state_measurable := fun _ => measurable_of_countable _
+  cells_measurable := fun _ => (Set.to_countable _).measurableSet
+  cells_disjoint := by intro θ η x hθ hη; exact hθ.symm.trans hη
+  cells_transport := by
+    rintro g θ ⟨b, n⟩
+    cases g <;> cases θ <;> cases b <;> cases n <;> decide
+  process_equivariant := by intro g t ω; rfl
+  transitive := by intro θ η; cases θ <;> cases η <;> first | exact ⟨false, rfl⟩ | exact ⟨true, rfl⟩
+  hit_measurable := (Set.to_countable _).measurableSet
+  exceptional := {ω | ω.2 = true}
+  exceptional_null := by
+    simp [paddedCoin, Measure.smul_apply, Measure.add_apply, Measure.dirac_apply]
+  exceptional_invariant := by intro g ω; rfl
+  firstTime := fun _ => (0 : WithTop ℕ)
+  orientation := fun ω => if ω.2 then some false else some ω.1
+  time_measurable := measurable_const
+  orientation_measurable := measurable_of_countable _
+  attained := by
+    rintro ⟨b, n⟩ _ hN
+    cases n with
+    | false =>
+      exact ⟨0, b, rfl, ⟨⟨le_rfl, le_rfl, b, rfl⟩, fun _ hs => hs.1⟩, rfl, rfl⟩
+    | true => exact False.elim (hN rfl)
+  off_time := by
+    intro ω h
+    exact False.elim (h ⟨0, le_rfl, le_rfl, ω.1, rfl⟩)
+  off_orientation := by
+    intro ω h
+    exact False.elim (h ⟨0, le_rfl, le_rfl, ω.1, rfl⟩)
+  path_law_invariant := padded_coin_invariant
+
+theorem padded_hit_univ : Hit paddedModel.process paddedModel.cells paddedModel.horizon = univ := by
+  ext ω
+  exact ⟨fun _ => trivial, fun _ => ⟨0, le_rfl, le_rfl, ω.1, rfl⟩⟩
+
+theorem exceptional_hit_nontransported_label :
+    (false, true) ∈ Hit paddedModel.process paddedModel.cells paddedModel.horizon ∩
+      paddedModel.exceptional ∧
+    paddedModel.orientation (paddedAction.act true (false, true)) ≠
+      (paddedModel.orientation (false, true)).map (flipAction.act true) := by
+  constructor
+  · exact ⟨⟨0, le_rfl, le_rfl, false, rfl⟩, rfl⟩
+  · decide
+
+theorem padded_probability_half (θ : Bool) :
+    paddedCoin (labelEvent paddedModel θ) = 1 / (2 : ℝ≥0∞) := by
+  rw [equal_orbit_first_hit paddedModel θ, padded_hit_univ, measure_univ]
+  rfl
+
 theorem discrete_hit_attains {Ω State Θ : Type*} (X : ℕ → Ω → State)
     (B : Θ → Set State) (T : ℕ) (ω : Ω) (hH : ω ∈ Hit X B T) :
     ∃ t, FirstEntry X B T ω t := by
@@ -179,6 +254,10 @@ end CausalFoundations.FirstHittingTests
 #print axioms CausalFoundations.FirstHittingTests.biased_path_law_not_invariant
 #print axioms CausalFoundations.FirstHittingTests.no_transitivity_no_uniformity
 #print axioms CausalFoundations.FirstHittingTests.nonnull_exception_cannot_be_ignored
+#print axioms CausalFoundations.FirstHittingTests.padded_coin_invariant
+#print axioms CausalFoundations.FirstHittingTests.padded_hit_univ
+#print axioms CausalFoundations.FirstHittingTests.exceptional_hit_nontransported_label
+#print axioms CausalFoundations.FirstHittingTests.padded_probability_half
 #print axioms CausalFoundations.FirstHittingTests.discrete_hit_attains
 #print axioms CausalFoundations.FirstHittingTests.continuous_visit_without_first_entry
 #print axioms CausalFoundations.FirstHittingTests.horizon_excludes_later_visits

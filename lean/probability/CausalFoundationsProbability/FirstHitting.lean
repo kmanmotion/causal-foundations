@@ -9,8 +9,9 @@ open scoped ENNReal
 Source: Causal Foundations v1.0, section 3.3, page 6.
 The path law is an actual probability measure. An attained minimum, its
 measurable time and label, and an invariant null exception set are explicit
-premises. The label is extended by `none` and the time by top off the attained
-hit domain. The time type can be natural or real; visits use the closed finite
+premises. The label is extended by `none` and the time by top off the hit
+event; values on null exceptional hits are unrestricted. The time type can be
+natural or real; visits use the closed finite
 window from zero to the declared horizon. No attainment follows from an
 infimum or from continuity alone.
 -/
@@ -75,8 +76,8 @@ structure Model (G : SymmetryGroup Γ) (pa : Action G Ω) (sa : Action G State)
     ∃ (t : Time) (θ : Θ), firstTime ω = (t : WithTop Time) ∧
       FirstEntry process cells horizon ω t ∧ orientation ω = some θ ∧
       process t ω ∈ cells θ
-  off_time : ∀ ω, (ω ∉ Hit process cells horizon ∨ ω ∈ exceptional) → firstTime ω = ⊤
-  off_orientation : ∀ ω, (ω ∉ Hit process cells horizon ∨ ω ∈ exceptional) →
+  off_time : ∀ ω, ω ∉ Hit process cells horizon → firstTime ω = ⊤
+  off_orientation : ∀ ω, ω ∉ Hit process cells horizon →
     orientation ω = none
   path_law_invariant : ∀ g, μ.map (pa.act g) = μ
 
@@ -128,26 +129,19 @@ theorem attained_time_label_transport (g : Γ) (ω : Ω)
     exact (D.cells_transport g θ _).2 hcell)
   exact ⟨hs.trans ht.symm, by simp only [hlabel, hlabel', Option.map_some, hη]⟩
 
-theorem time_transport (g : Γ) (ω : Ω) :
+theorem time_transport (g : Γ) (ω : Ω) (hN : ω ∉ D.exceptional) :
     D.firstTime (pa.act g ω) = D.firstTime ω := by
   by_cases hH : ω ∈ Hit D.process D.cells D.horizon
-  · by_cases hN : ω ∈ D.exceptional
-    · rw [D.off_time ω (Or.inr hN),
-        D.off_time (pa.act g ω) (Or.inr ((D.exceptional_invariant g ω).2 hN))]
-    · exact (attained_time_label_transport D g ω hH hN).1
-  · rw [D.off_time ω (Or.inl hH), D.off_time (pa.act g ω)
-      (Or.inl (fun h => hH ((hit_invariant D g ω).1 h)))]
+  · exact (attained_time_label_transport D g ω hH hN).1
+  · rw [D.off_time ω hH, D.off_time (pa.act g ω)
+      (fun h => hH ((hit_invariant D g ω).1 h))]
 
-theorem orientation_transport (g : Γ) (ω : Ω) :
+theorem orientation_transport (g : Γ) (ω : Ω) (hN : ω ∉ D.exceptional) :
     D.orientation (pa.act g ω) = (D.orientation ω).map (oa.act g) := by
   by_cases hH : ω ∈ Hit D.process D.cells D.horizon
-  · by_cases hN : ω ∈ D.exceptional
-    · rw [D.off_orientation ω (Or.inr hN), D.off_orientation (pa.act g ω)
-        (Or.inr ((D.exceptional_invariant g ω).2 hN))]
-      rfl
-    · exact (attained_time_label_transport D g ω hH hN).2
-  · rw [D.off_orientation ω (Or.inl hH), D.off_orientation (pa.act g ω)
-      (Or.inl (fun h => hH ((hit_invariant D g ω).1 h)))]
+  · exact (attained_time_label_transport D g ω hH hN).2
+  · rw [D.off_orientation ω hH, D.off_orientation (pa.act g ω)
+      (fun h => hH ((hit_invariant D g ω).1 h))]
     rfl
 
 theorem label_event_measurable (θ : Θ) : MeasurableSet (labelEvent D θ) :=
@@ -158,10 +152,15 @@ theorem orientation_action_injective (oa : Action G Θ) (g : Γ) : Function.Inje
   simpa only [inverse_act_act] using congrArg (oa.act (G.inverse g)) h
 
 theorem label_event_preimage (g : Γ) (θ : Θ) :
-    pa.act g ⁻¹' labelEvent D (oa.act g θ) = labelEvent D θ := by
-  ext ω
-  simp only [mem_preimage, labelEvent, mem_inter_iff, mem_setOf_eq,
-    hit_invariant D, orientation_transport D]
+    pa.act g ⁻¹' labelEvent D (oa.act g θ) =ᵐ[μ] labelEvent D θ := by
+  have hn : ∀ᵐ ω ∂μ, ω ∉ D.exceptional := by
+    rw [ae_iff]
+    simpa only [not_not, Set.setOf_mem_eq] using D.exceptional_null
+  filter_upwards [hn] with ω hN
+  apply propext
+  change pa.act g ω ∈ labelEvent D (oa.act g θ) ↔ ω ∈ labelEvent D θ
+  simp only [labelEvent, mem_inter_iff, mem_setOf_eq,
+    hit_invariant D, orientation_transport D g ω hN]
   constructor
   · rintro ⟨hH, hL⟩
     refine ⟨hH, ?_⟩
@@ -180,7 +179,7 @@ theorem related_label_probabilities (g : Γ) (θ : Θ) :
         μ.map (pa.act g) (labelEvent D (oa.act g θ)) := by rw [D.path_law_invariant]
     _ = μ (pa.act g ⁻¹' labelEvent D (oa.act g θ)) :=
       Measure.map_apply (D.path_measurable g) (label_event_measurable D _)
-    _ = μ (labelEvent D θ) := by rw [label_event_preimage D]
+    _ = μ (labelEvent D θ) := measure_congr (label_event_preimage D g θ)
 
 theorem equal_label_probabilities (θ η : Θ) : μ (labelEvent D θ) = μ (labelEvent D η) := by
   obtain ⟨g, hg⟩ := D.transitive θ η
@@ -192,24 +191,29 @@ theorem label_events_disjoint : Pairwise (fun θ η => Disjoint (labelEvent D θ
   intro ω hθ hη
   exact hne (Option.some.inj (hθ.2.symm.trans hη.2))
 
-theorem label_union : (⋃ θ, labelEvent D θ) = Hit D.process D.cells D.horizon \ D.exceptional := by
+theorem label_union : (⋃ θ, labelEvent D θ) \ D.exceptional =
+    Hit D.process D.cells D.horizon \ D.exceptional := by
   ext ω
   constructor
-  · intro h
+  · rintro ⟨h, hN⟩
     obtain ⟨θ, hθ⟩ := mem_iUnion.1 h
-    refine ⟨hθ.1, ?_⟩
-    intro hN
-    have he := D.off_orientation ω (Or.inr hN)
-    rw [hθ.2] at he
-    exact Option.noConfusion he
+    exact ⟨hθ.1, hN⟩
   · rintro ⟨hH, hN⟩
     obtain ⟨t, θ, _, _, hθ, _⟩ := D.attained ω hH hN
-    exact mem_iUnion.2 ⟨θ, hH, hθ⟩
+    exact ⟨mem_iUnion.2 ⟨θ, hH, hθ⟩, hN⟩
 
 theorem sum_label_probabilities [Fintype Θ] :
     (∑ θ, μ (labelEvent D θ)) = μ (Hit D.process D.cells D.horizon) := by
-  rw [← tsum_fintype (L := .unconditional Θ), ← measure_iUnion (label_events_disjoint D) (label_event_measurable D),
-    label_union D, measure_diff_null D.exceptional_null]
+  have hU : μ ((⋃ θ, labelEvent D θ) \ D.exceptional) =
+      μ (⋃ θ, labelEvent D θ) := measure_diff_null D.exceptional_null
+  have hH : μ (Hit D.process D.cells D.horizon \ D.exceptional) =
+      μ (Hit D.process D.cells D.horizon) := measure_diff_null D.exceptional_null
+  rw [← tsum_fintype (L := .unconditional Θ),
+    ← measure_iUnion (label_events_disjoint D) (label_event_measurable D)]
+  calc
+    μ (⋃ θ, labelEvent D θ) = μ ((⋃ θ, labelEvent D θ) \ D.exceptional) := hU.symm
+    _ = μ (Hit D.process D.cells D.horizon \ D.exceptional) := congrArg μ (label_union D)
+    _ = μ (Hit D.process D.cells D.horizon) := hH
 
 theorem card_positive [Fintype Θ] [Nonempty Θ] : (0 : ℝ≥0∞) < Fintype.card Θ := by
   exact_mod_cast Fintype.card_pos

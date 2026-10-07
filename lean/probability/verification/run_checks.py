@@ -228,7 +228,7 @@ def main():
             'native_evaluation_axioms': [], 'theorem3_axioms': ax['CausalFoundations.theorem3'],
             'toolchain': {'version': version.strip(), 'lock_sha256': digest(core / 'verification/TOOLCHAIN_LOCK.json')},
             'checker': {'commit': checker_commit, 'mode': '--fresh; same Lean kernel', 'target': 'ProbabilityReplayAll',
-                        'scope': 'All constants, including transitive pinned Mathlib and core imports'},
+                        'scope': 'All safe, total constants, including transitive pinned Mathlib and core imports'},
             'cold_rebuild': {'project_source_copy_only': True, 'project_compiled_cache_copied': False,
                              'external_pinned_dependency_cache_reused': True,
                              'axiom_outputs_equal': True, 'fresh_kernel_replay_passed': True},

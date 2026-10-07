@@ -25,14 +25,14 @@ python3 verification/run_checks.py \
   --require-standard-runtime
 ```
 
-There are **21 main theorem declarations and 12 boundary-test theorems**. The
+There are **21 main theorem declarations and 16 boundary-test theorems**. The
 exact dependency registry audits every one; all endpoint dependencies are the
 standard `propext`, `Classical.choice`, and `Quot.sound`. Custom proof assumptions,
 omitted proofs and native-evaluation dependencies are rejected.
 
 The 16 command checks bind the official runtime, three published PDFs, current
 proof sources and exact external dependency commits; compile and audit all new
-theorems; reject a false statement; and replay every imported constant into a
+theorems; reject a false statement; and replay every safe, total imported constant into a
 fresh environment using the pinned `lean4checker` and the unique
 `ProbabilityReplayAll` target, avoiding the core project's `ReplayAll` name. This includes the transitive
 Mathlib and core imports. A second build starts from copies of the project's Lean
@@ -43,8 +43,9 @@ are checked by both fresh replays. No cold source compilation of all of Mathlib
 is claimed.
 
 The original core's independent 24 command checks remain required. GitHub CI
-runs both runners, yielding 40 checks and 201 audited project theorem declarations
+runs both runners, yielding 40 checks and 205 audited project theorem declarations
 in total. Status requires both results for the exact source commit. A compatibility
 library is allowed only for explicitly labelled local runs and forbidden in CI.
-Replay uses the same official Lean kernel; it is not a separately implemented
+The pinned checker omits unsafe and partial definitions. Every project theorem
+and its logical proof dependencies is within the replay scope. Replay uses the same official Lean kernel; it is not a separately implemented
 verifier or independent certification of the paper-to-statement alignment.

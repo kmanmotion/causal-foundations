@@ -52,9 +52,9 @@ See the [Theorem 3 alignment](THEOREM3_ALIGNMENT.md),
 unformalized. The other 9 numbered theorems and remaining supplementary
 obligations are not claimed to be formalized.
 
-There are **145 audited main theorem declarations and 56 boundary-test theorems**
-across the core and probability subprojects (201 total). The original core has
-124 main and 44 test theorems; Theorem 3 adds 21 main and 12 test theorems.
+There are **145 audited main theorem declarations and 60 boundary-test theorems**
+across the core and probability subprojects (205 total). The original core has
+124 main and 44 test theorems; Theorem 3 adds 21 main and 16 test theorems.
 These include auxiliary lemmas and are not counts of new research discoveries.
 Theorem 13 depends on the standard `Classical.choice`; Theorem 14 depends on the
 standard `propext`, `Classical.choice` and `Quot.sound`; Theorems 15 and 16 depend on
@@ -106,10 +106,10 @@ python3 verification/run_checks.py \
 
 The runner checks the three published PDF hashes, official executable hashes,
 all 168 core theorem dependencies, rejection of a false statement, fresh kernel replay
-of all constants imported by `ReplayAll` (six proof modules and six test modules),
+of all safe, total constants imported by `ReplayAll` (six proof modules and six test modules),
 and a clean source rebuild followed by the same complete replay. Main and boundary
 dependency audits must agree between the two builds. There are 24 core command checks. The probability runner adds 16 checks, including
-all 33 new declarations and two fresh replays with transitive Mathlib imports.
+all 37 new declarations and two fresh replays with transitive Mathlib imports.
 Its cold project build reuses the pinned external dependency cache and copies
 no compiled project files. Both runners must pass for v0.7.0 (40 checks total).
 `NegativeControl.lean` deliberately contains an invalid proof of `2 = 3` and
@@ -136,7 +136,8 @@ For an affected local environment only, the runner accepts a compiled
 `--compat-library`; such a result is explicitly labelled as a compatibility run.
 
 Fresh replay uses the same Lean kernel, not an independently implemented
-verifier. Paper-to-formal-statement alignment was reviewed by the assisting AI;
+verifier. The pinned checker omits unsafe and partial definitions; every project
+theorem and its logical proof dependencies is within the replay scope. Paper-to-formal-statement alignment was reviewed by the assisting AI;
 it has not received independent human certification. Theorem 14
 selectors remain set-theoretic, without a claim of measurability, continuity or
 computability. Theorem 3 instead assumes the declared measurable first-time and

@@ -220,7 +220,7 @@ def main():
             'theorem1_deterministic_axioms': ax['CausalFoundations.theorem1_deterministic'],
             'toolchain': {'version': version.strip(), 'lock_sha256': digest(root / 'verification/TOOLCHAIN_LOCK.json')},
             'checker': {'commit': checker_commit, 'mode': '--fresh; same Lean kernel',
-                        'target': 'ReplayAll', 'scope': 'All constants of all six proof and all six test modules, including transitive imports'},
+                        'target': 'ReplayAll', 'scope': 'All safe, total constants of all six proof and all six test modules, including transitive imports'},
             'cold_rebuild': {'source_copy_only': True, 'axiom_outputs_equal': True,
                              'fresh_kernel_replay_passed': True},
         })
