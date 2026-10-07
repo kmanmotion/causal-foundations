@@ -1,0 +1,23 @@
+import CausalFoundationsProbability
+
+#print axioms CausalFoundations.FirstHitting.visit_transport
+#print axioms CausalFoundations.FirstHitting.visit_transport_iff
+#print axioms CausalFoundations.FirstHitting.hit_invariant
+#print axioms CausalFoundations.FirstHitting.first_entry_transport
+#print axioms CausalFoundations.FirstHitting.first_entry_unique
+#print axioms CausalFoundations.FirstHitting.attained_time_label_transport
+#print axioms CausalFoundations.FirstHitting.time_transport
+#print axioms CausalFoundations.FirstHitting.orientation_transport
+#print axioms CausalFoundations.FirstHitting.label_event_measurable
+#print axioms CausalFoundations.FirstHitting.orientation_action_injective
+#print axioms CausalFoundations.FirstHitting.label_event_preimage
+#print axioms CausalFoundations.FirstHitting.related_label_probabilities
+#print axioms CausalFoundations.FirstHitting.equal_label_probabilities
+#print axioms CausalFoundations.FirstHitting.label_events_disjoint
+#print axioms CausalFoundations.FirstHitting.label_union
+#print axioms CausalFoundations.FirstHitting.sum_label_probabilities
+#print axioms CausalFoundations.FirstHitting.card_positive
+#print axioms CausalFoundations.FirstHitting.equal_orbit_first_hit
+#print axioms CausalFoundations.FirstHitting.conditional_uniform
+#print axioms CausalFoundations.FirstHitting.null_hit_zero
+#print axioms CausalFoundations.theorem3

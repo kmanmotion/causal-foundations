@@ -17,9 +17,9 @@ concurrency:
 
 jobs:
   verify:
-    name: Compile, audit and replay Theorems 2, 13–16 and T1 deterministic
+    name: Compile, audit and replay Theorems 2, 3, 13–16 and T1 deterministic
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 180
     steps:
       - name: Check out the exact source commit
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -61,5 +61,22 @@ jobs:
         with:
           name: lean-verification-${{ github.run_id }}-${{ github.run_attempt }}
           path: lean/verification/run/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Verify pinned probability and actual first hitting
+        shell: bash
+        run: |
+          python3 lean/probability/verification/run_checks.py \
+            --toolchain "$RUNNER_TEMP/lean-4.24.0-linux" \
+            --checker "$RUNNER_TEMP/lean4checker" \
+            --require-standard-runtime
+
+      - name: Retain probability verification results and logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: lean-probability-verification-${{ github.run_id }}-${{ github.run_attempt }}
+          path: lean/probability/verification/run/
           if-no-files-found: warn
           retention-days: 14

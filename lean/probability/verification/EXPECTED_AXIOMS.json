@@ -1,0 +1,183 @@
+{
+  "CausalFoundations.FirstHitting.visit_transport": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.visit_transport_iff": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.hit_invariant": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.first_entry_transport": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.first_entry_unique": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.attained_time_label_transport": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.time_transport": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.orientation_transport": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.label_event_measurable": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.orientation_action_injective": [],
+  "CausalFoundations.FirstHitting.label_event_preimage": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.related_label_probabilities": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.equal_label_probabilities": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.label_events_disjoint": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.label_union": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.sum_label_probabilities": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.card_positive": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.equal_orbit_first_hit": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.conditional_uniform": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHitting.null_hit_zero": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.theorem3": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.coin_invariant": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.coin_hit_univ": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.two_orientation_half": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.positive_hit_conditional_half": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.invariant_law_has_asymmetric_realization": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.biased_path_law_not_invariant": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.no_transitivity_no_uniformity": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.nonnull_exception_cannot_be_ignored": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.discrete_hit_attains": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.continuous_visit_without_first_entry": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.horizon_excludes_later_visits": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.zero_hit_ratio_is_zero": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.padded_coin_invariant": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.padded_hit_univ": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.exceptional_hit_nontransported_label": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FirstHittingTests.padded_probability_half": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ]
+}
