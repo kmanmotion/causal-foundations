@@ -5,3 +5,4 @@ import SemanticBasisTests
 import RepresentationTests
 import FixedSetTests
 import OrbitErasureTests
+import FiniteMatchingTests

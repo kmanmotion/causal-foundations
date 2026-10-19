@@ -35,7 +35,8 @@
     "Theorem 16, constructed order isomorphism of semantic sufficient-basis posets under bijective ambient-model and atom transport, with minimal-class and maximal-conjunction-domain invariance",
     "Theorem 1 deterministic branch only, fixed states under group actions, constructed inverse-relabeling channel action and equivariant deterministic evolution; stochastic branch remains NOT_FORMALIZED",
     "Theorem 2, actual state-action orbit quotient, factorization and assay equivariance restricted to a group-stable domain; stable finite-path reachability derived from stable preparation and equivariant transition/intervention families",
-    "Theorem 3, finite transitive orientation orbit, measurable cells and hit event, actual attained first entry outside an invariant null set, measurable extended time/orientation, invariant complete path probability law and uniform conditional orientation only for positive hit probability"
+    "Theorem 3, finite transitive orientation orbit, measurable cells and hit event, actual attained first entry outside an invariant null set, measurable extended time/orientation, invariant complete path probability law and uniform conditional orientation only for positive hit probability",
+    "Theorem 4 structural foundations only: actual finite partial matchings, independent permutation-group action, one-link extensions, common-null frozen deterministic assay, exact single-link ablation and nontrivial perfect-matching channel orbit; CTMC, holding times, probabilities and expectation remain NOT_FORMALIZED"
   ],
   "whole_paper_formalized": false
 }

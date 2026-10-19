@@ -45,12 +45,14 @@ def main():
         env['LD_PRELOAD'] = str(args.compat_library.resolve())
     records = []
     result = {
-        'schema': 'causal-foundations-lean-verification-v7',
+        'schema': 'causal-foundations-lean-verification-v8',
         'status': 'RUNNING',
         'started_utc': datetime.now(timezone.utc).isoformat(),
         'published_numbered_endpoints_targeted': ['Theorem 2', 'Theorem 13', 'Theorem 14', 'Theorem 15', 'Theorem 16'],
         'published_numbered_endpoint_branches_targeted': ['Theorem 1/deterministic'],
         'whole_paper_formalized': False,
+        'partial_structural_work': ['Theorem 4/finite matching foundations'],
+        'theorem4_status': 'PARTIAL_STRUCTURAL_FOUNDATIONS_ONLY',
         'runtime_compatibility': {'used': bool(args.compat_library)},
         'external_peer_review': False,
         'independent_kernel_verification': False,
@@ -62,6 +64,7 @@ def main():
         (out / 'results.json').write_text(json.dumps(result, indent=2) + '\n')
 
     def run(label, command, cwd=root, extra=None, expect_failure=False):
+        label = f"{len(records) + 1:02d}_{label.split('_', 1)[1]}"
         command = [str(x) for x in command]
         local_env = dict(env)
         local_env.update(extra or {})
@@ -105,8 +108,8 @@ def main():
         expected = json.loads((root / 'verification/EXPECTED_AXIOMS.json').read_text())
         main_modules = ['CausalFoundations.ResourcePrefix', 'CausalFoundations.ResidualGame',
                         'CausalFoundations.SemanticBasis', 'CausalFoundations.Representation', 'CausalFoundations.FixedSet',
-                        'CausalFoundations.OrbitErasure']
-        test_modules = ['BoundaryTests', 'ResidualGameTests', 'SemanticBasisTests', 'RepresentationTests', 'FixedSetTests', 'OrbitErasureTests']
+                        'CausalFoundations.OrbitErasure', 'CausalFoundations.FiniteMatching']
+        test_modules = ['BoundaryTests', 'ResidualGameTests', 'SemanticBasisTests', 'RepresentationTests', 'FixedSetTests', 'OrbitErasureTests', 'FiniteMatchingTests']
         module_files = {name: name.replace('.', '/') + '.lean'
                         for name in main_modules + test_modules}
         proof_files = ['CausalFoundations.lean', 'AxiomAudit.lean', 'ReplayAll.lean', *module_files.values()]
@@ -220,7 +223,7 @@ def main():
             'theorem1_deterministic_axioms': ax['CausalFoundations.theorem1_deterministic'],
             'toolchain': {'version': version.strip(), 'lock_sha256': digest(root / 'verification/TOOLCHAIN_LOCK.json')},
             'checker': {'commit': checker_commit, 'mode': '--fresh; same Lean kernel',
-                        'target': 'ReplayAll', 'scope': 'All safe, total constants of all six proof and all six test modules, including transitive imports'},
+                        'target': 'ReplayAll', 'scope': 'All safe, total constants of all seven proof and all seven test modules, including transitive imports'},
             'cold_rebuild': {'source_copy_only': True, 'axiom_outputs_equal': True,
                              'fresh_kernel_replay_passed': True},
         })
