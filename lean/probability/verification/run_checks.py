@@ -145,8 +145,9 @@ def main():
             'CausalFoundations/ResourcePrefix.lean', 'CausalFoundations/ResidualGame.lean',
             'CausalFoundations/SemanticBasis.lean', 'CausalFoundations/Representation.lean',
             'CausalFoundations/FixedSet.lean', 'CausalFoundations/OrbitErasure.lean',
+            'CausalFoundations/FiniteMatching.lean',
             'BoundaryTests.lean', 'ResidualGameTests.lean', 'SemanticBasisTests.lean',
-            'RepresentationTests.lean', 'FixedSetTests.lean', 'OrbitErasureTests.lean']
+            'RepresentationTests.lean', 'FixedSetTests.lean', 'OrbitErasureTests.lean', 'FiniteMatchingTests.lean']
         result['core_source_sha256'] = {file: digest(core / file) for file in core_sources}
         result['core_registry_sha256'] = digest(core / 'verification/EXPECTED_AXIOMS.json')
         result['core_audited_declaration_count'] = len(core_expected)

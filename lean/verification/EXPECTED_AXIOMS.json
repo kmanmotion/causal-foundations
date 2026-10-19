@@ -392,5 +392,155 @@
   ],
   "CausalFoundations.OrbitErasureTests.transported_interventions_generate_stable_reachability": [],
   "CausalFoundations.OrbitErasureTests.empty_preparation_has_no_reachable_origin": [],
-  "CausalFoundations.OrbitErasureTests.transition_family_closure_is_essential": []
+  "CausalFoundations.OrbitErasureTests.transition_family_closure_is_essential": [],
+  "CausalFoundations.FiniteMatching.permutation_ext": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.map_response_inverse": [],
+  "CausalFoundations.FiniteMatching.map_response_injective": [],
+  "CausalFoundations.FiniteMatching.matching_ext": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.empty_no_links": [],
+  "CausalFoundations.FiniteMatching.empty_all_pairs_admissible": [],
+  "CausalFoundations.FiniteMatching.transport_link_iff": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.empty_fixed": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.common_null_fixed": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.assay_unique_response": [],
+  "CausalFoundations.FiniteMatching.assay_equivariant": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.empty_assay_common_null": [],
+  "CausalFoundations.FiniteMatching.ablate_response": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.ablate_other_response": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.ablate_exact_link": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.realized_link_ablation_changes_response": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.ablate_transport": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.extension_exact_link": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.extension_ablation_recovers": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.transport_admissible": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.extend_transport": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.permutation_matching_perfect": [],
+  "CausalFoundations.FiniteMatching.perfect_iff_permutation": [
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.perfect_matchings_same_orbit": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.genesis_step_transport": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.ablate_empty": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.empty_deletion_minors": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.genesis_step_changes_realized_state": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.genesis_step_preserves_links": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.assay_faithful": [
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.perfect_has_no_admissible_pair": [],
+  "CausalFoundations.FiniteMatching.perfect_each_challenge_ablatable": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.swap_involution": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatching.distinct_perfect_relabelings": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.at_least_two_contingent_matchings": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.perfect_channel_has_nontrivial_example": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatching.finite_matching_foundations": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatchingTests.zero_carrier_is_vacuously_perfect": [],
+  "CausalFoundations.FiniteMatchingTests.empty_origin_has_no_challenge_contrast": [],
+  "CausalFoundations.FiniteMatchingTests.empty_origin_survives_any_finite_deletion_list": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatchingTests.two_carriers_have_distinct_equivalent_perfect_organizations": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatchingTests.reused_input_is_forbidden": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatchingTests.reused_output_is_forbidden": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatchingTests.new_pair_really_changes_state": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatchingTests.ablation_recovers_origin_and_only_changes_selected_challenge": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatchingTests.many_to_one_map_is_not_a_matching": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatchingTests.input_relabeling_uses_inverse_and_null_stays_common": [
+    "propext"
+  ],
+  "CausalFoundations.FiniteMatchingTests.singleton_permutation_matching_has_no_challenge_contrast": [
+    "propext",
+    "Quot.sound"
+  ],
+  "CausalFoundations.FiniteMatchingTests.two_carriers_support_nontrivial_channel_orbit": [
+    "propext",
+    "Quot.sound"
+  ]
 }

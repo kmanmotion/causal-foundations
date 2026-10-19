@@ -1,4 +1,4 @@
-# Causal Foundations — Lean 4 formalization v0.7.0
+# Causal Foundations — Lean 4 formalization v0.8.0
 
 This supplement formalizes **Theorems 2, 3, 13, 14, 15 and 16** and the
 **deterministic branch of Theorem 1** of Kai Liang's
@@ -41,6 +41,8 @@ Heredity, and Reflexive Maintenance*, v1.0,
   explicit. Conditional uniformity requires positive hit probability. This
   endpoint is in the [probability subproject](probability/README.md).
 
+Theorem 4 has a separately audited [finite structural foundation](THEOREM4_FINITE_ALIGNMENT.md): actual partial matchings, independent permutation actions, exact one-link extensions, a common-null frozen readout, exact link ablation, and perfect-matching orbit results. Its CTMC, counting, waiting-time and first-passage conclusions remain unfinished.
+
 See the [Theorem 3 alignment](THEOREM3_ALIGNMENT.md),
 [Theorem 2 alignment](THEOREM2_ALIGNMENT.md),
 [Theorem 1 deterministic alignment](THEOREM1_DETERMINISTIC_ALIGNMENT.md),
@@ -52,9 +54,8 @@ See the [Theorem 3 alignment](THEOREM3_ALIGNMENT.md),
 unformalized. The other 9 numbered theorems and remaining supplementary
 obligations are not claimed to be formalized.
 
-There are **145 audited main theorem declarations and 60 boundary-test theorems**
-across the core and probability subprojects (205 total). The original core has
-124 main and 44 test theorems; Theorem 3 adds 21 main and 16 test theorems.
+There are **182 audited main theorem declarations and 72 boundary-test theorems**
+across the core and probability subprojects (254 total). The core has 161 main and 56 test theorems; the probability project has 21 main and 16 test theorems. Theorem 4 foundations add 37 main and 12 test theorems in this version.
 These include auxiliary lemmas and are not counts of new research discoveries.
 Theorem 13 depends on the standard `Classical.choice`; Theorem 14 depends on the
 standard `propext`, `Classical.choice` and `Quot.sound`; Theorems 15 and 16 depend on
@@ -91,6 +92,7 @@ lake env lean SemanticBasisTests.lean -o .lake/build/lib/lean/SemanticBasisTests
 lake env lean RepresentationTests.lean -o .lake/build/lib/lean/RepresentationTests.olean
 lake env lean FixedSetTests.lean -o .lake/build/lib/lean/FixedSetTests.olean
 lake env lean OrbitErasureTests.lean -o .lake/build/lib/lean/OrbitErasureTests.olean
+lake env lean FiniteMatchingTests.lean -o .lake/build/lib/lean/FiniteMatchingTests.olean
 ```
 
 For the complete checks, obtain the official
@@ -105,13 +107,13 @@ python3 verification/run_checks.py \
 ```
 
 The runner checks the three published PDF hashes, official executable hashes,
-all 168 core theorem dependencies, rejection of a false statement, fresh kernel replay
-of all safe, total constants imported by `ReplayAll` (six proof modules and six test modules),
+all 217 core theorem dependencies, rejection of a false statement, fresh kernel replay
+of all safe, total constants imported by `ReplayAll` (seven proof modules and seven test modules),
 and a clean source rebuild followed by the same complete replay. Main and boundary
-dependency audits must agree between the two builds. There are 24 core command checks. The probability runner adds 16 checks, including
+dependency audits must agree between the two builds. There are 26 core command checks. The probability runner adds 16 checks, including
 all 37 new declarations and two fresh replays with transitive Mathlib imports.
 Its cold project build reuses the pinned external dependency cache and copies
-no compiled project files. Both runners must pass for v0.7.0 (40 checks total).
+no compiled project files. Both runners must pass for v0.8.0 (42 checks total).
 `NegativeControl.lean` deliberately contains an invalid proof of `2 = 3` and
 must fail compilation; it is excluded from the library and default build target.
 
@@ -146,7 +148,6 @@ Formal verification does not establish biochemical realization or historical
 origin claims. Publication and review status are described in the
 [repository README](../README.md).
 
-The proposed next target is Theorem 4's finite matching genesis construction,
-starting with partial matchings, the frozen challenge assay and single-link ablation. Theorem 1's stochastic branch retains
+The next target is Theorem 4's exact finite admissible-pair counting and extension-path combinatorics, followed by its CTMC law and waiting-time results. The finite matching, frozen assay and single-link ablation foundations are complete. Theorem 1's stochastic branch retains
 separate incomplete status until its conditional-probability and countable
 actual-update obligations are proved.
